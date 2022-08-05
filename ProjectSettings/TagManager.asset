@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Farm
-  - Harvestable
-  - Plantable
-  - Collectable
-  - HarvestableArea
-  - PlantableArea
+  tags: []
   layers:
   - Default
   - TransparentFX

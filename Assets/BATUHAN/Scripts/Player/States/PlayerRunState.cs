@@ -88,11 +88,11 @@ public class PlayerRunState : PlayerBaseState
             player.SwitchState(player.carryState);
         }*/
         
-        if (collider.CompareTag(player._playerController.harvestableAreaTag))
+        if (collider.TryGetComponent(out FarmLand _))
         {
             player.SwitchState(player.harvestState);
         }
-        else if (collider.CompareTag(player._playerController.plantableAreaTag))
+        else if (collider.TryGetComponent(out FarmLand _))
         {
             player.SwitchState(player.plantState);
         }
