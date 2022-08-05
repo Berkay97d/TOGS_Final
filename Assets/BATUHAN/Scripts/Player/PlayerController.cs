@@ -5,9 +5,5 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Tag] 
-    public string harvestableAreaTag, plantableAreaTag;
     
-    [Tag] 
-    public string harvestableTag, plantableTag;
 }

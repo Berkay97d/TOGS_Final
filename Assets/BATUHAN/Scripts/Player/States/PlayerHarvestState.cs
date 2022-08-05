@@ -85,7 +85,7 @@ public class PlayerHarvestState : PlayerBaseState
 
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
-        if (collider.CompareTag(player._playerController.harvestableAreaTag))
+        if (collider.TryGetComponent(out FarmLand _))
         {
             player.SwitchState(player.idleState);
         }

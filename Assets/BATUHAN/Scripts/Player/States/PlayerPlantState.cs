@@ -16,7 +16,7 @@ public class PlayerPlantState : PlayerBaseState
     
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
-        if (collider.CompareTag(player._playerController.plantableAreaTag))
+        if (collider.TryGetComponent(out FarmLand _))
         {
             player.SwitchState(player.idleState);
         }
