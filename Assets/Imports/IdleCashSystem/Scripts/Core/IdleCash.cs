@@ -127,8 +127,8 @@ namespace IdleCashSystem.Core
         public override string ToString()
         {
             Simplify();
-            
-            return $"{value:0.00}{type}";
+
+            return TypeIndex == 0 ? $"{value}{type}" : $"{value:0.00}{type}";
         }
 
 

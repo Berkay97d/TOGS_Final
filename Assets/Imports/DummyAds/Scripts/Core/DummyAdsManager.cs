@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace DummyAds.Core
 {
-    [CreateAssetMenu(menuName = "DummyAds/Manager")]
+    //[CreateAssetMenu(menuName = "DummyAds/Manager")]
     public class DummyAdsManager : ScriptableObject
     {
         private const string Path = "";

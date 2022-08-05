@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace IdleCashSystem.Core
 {
-    [CreateAssetMenu(menuName = MenuName)]
+    //[CreateAssetMenu(menuName = MenuName)]
     public class IdleCashTypeCreator : ScriptableObject
     {
         private const string MenuName = "My Creators/" + nameof(IdleCashTypeCreator);
