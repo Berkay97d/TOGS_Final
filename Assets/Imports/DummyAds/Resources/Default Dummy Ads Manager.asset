@@ -20,8 +20,4 @@ MonoBehaviour:
     landscapeAdSprite: {fileID: 21300000, guid: 44b5b617d3fcd4b70aa13e8816b2ff29, type: 3}
     portraitAdSprite: {fileID: 21300000, guid: f8a1aa2e168854998ac9460c64f57b02, type: 3}
     url: 
-  adDatas:
-  - name: 
-    landscapeAdSprite: {fileID: 0}
-    portraitAdSprite: {fileID: 0}
-    url: 
+  adDatas: []
