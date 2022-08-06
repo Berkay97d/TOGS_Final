@@ -1,4 +1,5 @@
 using System.Linq;
+using EMRE.Scripts;
 using IdleCashSystem.Core;
 using LazyDoTween.Core;
 using UnityEngine;
@@ -84,18 +85,16 @@ public class PlayerRunState : PlayerBaseState
     {
         if (collision.gameObject.TryGetComponent(out Item item))
         {
-            if (Inventory.IsFull(player._playerStackTransition.bagSize))
+            if (item is MoneyBundle moneyBundle)
             {
-                Inventory.StackItem(item.Data, IdleCash.One);
-                Debug.Log("Collected");
-            
-                player._playerStackTransition.CollectItem(item.transform);
+                moneyBundle.Deposit();
             }
             
-
-            foreach (var pair in Inventory.Stock)
+            else if (!Inventory.IsFull(player._playerStackTransition.bagSize))
             {
-                Debug.Log("Key: "+pair.key + " | Val: " + pair.value);
+                Inventory.StackItem(item.Data, IdleCash.One);
+
+                player._playerStackTransition.CollectItem(item.transform);
             }
         }
     }
