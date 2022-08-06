@@ -153,11 +153,10 @@ public class PlayerStackTransition : MonoBehaviour
         isShipCoroutineStarted = false;
     }
 
+    float bottleOffsetZ = -1f;
+    float bottleOffsetX = 0f;
     IEnumerator MoveToShip(List<Juice> juices)
     {
-        var bottleOffsetZ = -1f;
-        var bottleOffsetX = 0f;
-        
         isShipCoroutineStarted = true;
         var itemsLength = juices.Count;
         while (itemsLength > 0)
@@ -191,6 +190,11 @@ public class PlayerStackTransition : MonoBehaviour
             
             yield return new WaitForSeconds(itemToShipDelay);
         }
+
+        _ship.GoSellJuicesShipAnimation();
+        bottleOffsetZ = -1f;
+        bottleOffsetX = 0f;
+        
         isShipCoroutineStarted = false;
     }
 }

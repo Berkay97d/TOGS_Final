@@ -74,11 +74,12 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
         {
-            player._cinemachineController.JuicesSelling();
+            if (!Inventory.IsEmpty())
+            {
+                player._cinemachineController.JuicesSelling();
         
-            player._playerStackTransition.JuicesMovingToShip();
-        
-            juiceSellPoint.transform.parent.GetComponent<DoLazyRotate>().Play();
+                player._playerStackTransition.JuicesMovingToShip();
+            }
         }
     }
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
@@ -93,8 +94,6 @@ public class PlayerRunState : PlayerBaseState
             player._cinemachineController.InitialPriority();
             
             player._playerStackTransition.StopJuicesMovingToShip();
-            
-            juiceSellPoint.transform.parent.GetComponent<DoLazyRotate>().Kill();
         }
     }
     
