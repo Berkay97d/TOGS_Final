@@ -134,7 +134,7 @@ public class PlayerStackTransition : MonoBehaviour
             yield return new WaitForSeconds(itemToJuicerDelay);
         }
         
-        // SortBagItems();
+        SortBagItems();
         isJuicerCoroutineStarted = false;
     }
 
@@ -205,7 +205,7 @@ public class PlayerStackTransition : MonoBehaviour
         bottleOffsetZ = 0f;
         bottleOffsetX = 0f;
 
-        // SortBagItems();
+        SortBagItems();
         isShipCoroutineStarted = false;
     }
 
