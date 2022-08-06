@@ -67,7 +67,7 @@ public class PlayerRunState : PlayerBaseState
         else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
         {
             player._playerStackTransition.JuicerTankMoving();
-            juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Play();  
+            juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Play();
         }
     }
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)

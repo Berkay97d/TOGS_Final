@@ -15,7 +15,8 @@ public class PlayerStackTransition : MonoBehaviour
     private float bagItemOffsetY = 0;
     [Range(0.1f,1f)][SerializeField] private float bagItemOffsetYAmount = 0f;
 
-    [Header("JUICER")]
+    [Header("JUICER")] 
+    [SerializeField] private Juicer _juicer;
     [SerializeField]  private Transform juicerTank;
     [Range(1,10)][SerializeField] private float itemToJuicerSpeed;
     [Range(0.1f,3f)][SerializeField] private float itemToJuicerDelay;
@@ -95,19 +96,17 @@ public class PlayerStackTransition : MonoBehaviour
             items[itemsLength].DOLocalMove(itemJuicerTankPosition, 3f / itemToJuicerSpeed).SetEase(Ease.OutCubic)
                 .OnComplete(() =>
                 {
-                    // Destroy(items[itemsLength].gameObject);
+
+                    if (Inventory.TryRemoveItem(items[itemsLength].GetComponent<Item>()))
+                    {
+                        _juicer.GetComponent<Juicer>().EnqueuItem( items[itemsLength].GetComponent<Fruit>());
+                    }
+
                 });
-
-            if (Inventory.TryRemoveItem(items[itemsLength].GetComponent<Item>()))
-            {
-                
-            }
-
             bagItemOffsetY -= bagItemOffsetYAmount;
             
             yield return new WaitForSeconds(itemToJuicerDelay);
         }
         isJuicerCoroutineStarted = false;
     }
-
 }
