@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using EMRE.Scripts;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Juicer : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class Juicer : MonoBehaviour
 
         juice.transform.position = juiceOutPoint.position;
 
+        var randomAngle = Random.Range(-30f, 30f);
         var force = juiceOutPoint.forward * 10f;
+        force = Quaternion.Euler(Vector3.up * randomAngle) * force;
         juice.Throw(force);
         
         fruit.Destroy();

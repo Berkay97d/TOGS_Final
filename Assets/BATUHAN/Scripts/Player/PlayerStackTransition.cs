@@ -84,6 +84,8 @@ public class PlayerStackTransition : MonoBehaviour
                 CollectItem(newItem.transform);
             }
         }
+        
+        CapacityDisplay.OnItemCountChanged(IdleCash.One * playerBag.childCount);
     }
 
 
@@ -99,6 +101,8 @@ public class PlayerStackTransition : MonoBehaviour
         item.DOLocalRotate(Vector3.zero, 3f / itemToBagSpeed);
 
         bagItemOffsetY += bagItemOffsetYAmount;
+        
+        CapacityDisplay.OnItemCountChanged(IdleCash.One * playerBag.childCount);
     }
 
     public void JuicerTankMoving()
@@ -136,6 +140,7 @@ public class PlayerStackTransition : MonoBehaviour
             if (!fruit) continue;
             
             fruit.transform.SetParent(juicerTank, true);
+            CapacityDisplay.OnItemCountChanged(IdleCash.One * playerBag.childCount);
 
             var itemJuicerTankPosition = new Vector3(0, 0, 0);
             fruit.transform.DOLocalRotate(Vector3.zero, 3f / itemToJuicerSpeed);
@@ -202,6 +207,7 @@ public class PlayerStackTransition : MonoBehaviour
             if (!juice) continue;
             
             juice.transform.SetParent(_ship.juicesStackPoint);
+            CapacityDisplay.OnItemCountChanged(IdleCash.One * playerBag.childCount);
             
             var itemJuicesStackPointPosition = new Vector3(bottleOffsetX, 0, bottleOffsetZ);
             juice.transform.DOLocalRotate(Vector3.zero, 3f / itemToShipSpeed);
