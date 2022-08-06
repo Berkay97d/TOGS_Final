@@ -131,7 +131,7 @@ public static class Inventory
 
     public static bool IsFull(IdleCash size)
     {
-        return Count < size;
+        return Count >= size;
     }
     public static bool IsEmpty()
     {
