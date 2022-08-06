@@ -1,13 +1,17 @@
 using System;
+using Helpers;
 using IdleCashSystem.Core;
 using TMPro;
 using UnityEngine;
 
-public class BalanceCounter : MonoBehaviour
+public class BalanceCounter : Scenegleton<BalanceCounter>
 {
     [SerializeField] private TMP_Text balanceField;
 
 
+    public static Vector3 Position => Instance.transform.position;
+    
+    
     private void Start()
     {
         UpdateBalance(Balance.Amount);

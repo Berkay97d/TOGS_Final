@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Helpers;
 using IdleCashSystem.Core;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -136,6 +137,16 @@ public static class Inventory
     public static bool IsEmpty()
     {
         return Count <= IdleCash.Zero;
+    }
+
+    public static bool HasItemType<T>()
+    {
+        foreach (var pair in Stock)
+        {
+            if (pair.key.prefab is T) return true;
+        }
+
+        return false;
     }
 
 

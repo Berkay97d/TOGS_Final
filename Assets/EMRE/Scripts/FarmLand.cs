@@ -6,6 +6,7 @@ using UnityEngine;
 
 public enum FarmLandState
 {
+    Locked,
     Seeding,
     Growing,
     Harvestable
@@ -19,6 +20,8 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private Transform farmTileParent;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private HarvestableContainer harvestableContainer;
+    [SerializeField] private GameObject locks;
+    [SerializeField] private bool unlockOnStart;
     
     [Header("Values")]
     [SerializeField] private int x;
@@ -33,6 +36,8 @@ public class FarmLand : MonoBehaviour
     {
         get
         {
+            if (locks.activeSelf) return FarmLandState.Locked;
+            
             foreach (var farmTile in m_FarmTiles)
             {
                 var harvestable = farmTile.Harvestable;
@@ -62,6 +67,10 @@ public class FarmLand : MonoBehaviour
     private void Start()
     {
         Build();
+        if (unlockOnStart)
+        {
+            Unlock();
+        }
     }
 
 
@@ -81,6 +90,11 @@ public class FarmLand : MonoBehaviour
                 farmTile.Harvestable.StartGrowing();
             }
         }
+    }
+
+    public void Unlock()
+    {
+        locks.SetActive(false);
     }
     
 

@@ -6,7 +6,6 @@ using UnityEngine;
 public class Juice : Item
 {
     [SerializeField] private ItemData moneyBundle;
-    
     [SerializeField] private DoLazyGroup doLazyGroup;
 
 
@@ -15,17 +14,17 @@ public class Juice : Item
         PlayAnimation();
     }
 
-
-    private void PlayAnimation()
-    {
-        doLazyGroup.Play();
-    }
-    
     
     public MoneyBundle TurnToMoneyBundle()
     {
         var money = Instantiate((MoneyBundle)moneyBundle.prefab);
         money.SetValue(Data.value);
         return money;
+    }
+    
+
+    private void PlayAnimation()
+    {
+        doLazyGroup.Play();
     }
 }

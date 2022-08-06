@@ -2,7 +2,7 @@ using UpgradeSystem.Core;
 
 namespace UpgradeSystem.Scripts.Test
 {
-    public class PlayerSpeedUpgrade : UpgradeBehaviour<int, float>
+    public class PlayerSpeedUpgradeTest : UpgradeBehaviour<int, float>
     {
         protected override BaseUpgradeCalculator<int, float> Calculator
         {

@@ -13,7 +13,7 @@ public class PlayerStackTransition : MonoBehaviour
     [SerializeField] private Transform playerBag;
     [Range(1, 10)] [SerializeField] private float itemToBagSpeed;
     private float bagItemOffsetY = 0;
-    [Range(0.1f,1f)][SerializeField] private float bagItemOffsetYAmount = 0f;
+    [Range(0.1f,1f)][SerializeField] private float bagItemOffsetYAmount;
 
     [Header("JUICER")] 
     [SerializeField] private Juicer _juicer;
@@ -28,15 +28,25 @@ public class PlayerStackTransition : MonoBehaviour
 
     [SerializeField] private int bottlesPerLine;
 
-
     private IEnumerator juicerCoroutine, shipCoroutine;
     private bool isJuicerCoroutineStarted = false, isShipCoroutineStarted = false;
+    
+    private float bottleOffsetZ = 0f;
+    private float bottleOffsetX = 0f;
+    
+    
     private void Start()
     {
+        bagItemOffsetY = 0f;
+        
         LoadPlayerBagFromInventory();
-        
-        
-        
+
+        isJuicerCoroutineStarted = false;
+        isShipCoroutineStarted = false;
+        bottleOffsetZ = 0f;
+        bottleOffsetX = 0f;
+
+
         juicerCoroutine = MoveToJuicerTank(null);
         shipCoroutine = MoveToShip(null);
 
@@ -123,6 +133,8 @@ public class PlayerStackTransition : MonoBehaviour
             
             yield return new WaitForSeconds(itemToJuicerDelay);
         }
+        
+        SortBagItems();
         isJuicerCoroutineStarted = false;
     }
 
@@ -153,15 +165,13 @@ public class PlayerStackTransition : MonoBehaviour
         isShipCoroutineStarted = false;
     }
 
-    float bottleOffsetZ = -1f;
-    float bottleOffsetX = 0f;
     IEnumerator MoveToShip(List<Juice> juices)
     {
         isShipCoroutineStarted = true;
         var itemsLength = juices.Count;
         while (itemsLength > 0)
         {
-            if (itemsLength % bottlesPerLine == 0)
+            if (itemsLength >= bottlesPerLine && itemsLength % bottlesPerLine == 0)
             {
                 bottleOffsetX += 0.5f;
                 bottleOffsetZ = 0f;
@@ -192,9 +202,23 @@ public class PlayerStackTransition : MonoBehaviour
         }
 
         _ship.GoSellJuicesShipAnimation();
-        bottleOffsetZ = -1f;
+        bottleOffsetZ = 0f;
         bottleOffsetX = 0f;
-        
+
+        SortBagItems();
         isShipCoroutineStarted = false;
+    }
+
+    public void SortBagItems()
+    {
+        bagItemOffsetY = 0f;
+        for (int i = 0; i < playerBag.childCount; i++)
+        {
+            var itemBagPosition = new Vector3(0, bagItemOffsetY, 0);
+            playerBag.GetChild(i).DOLocalMove(itemBagPosition, 3f / itemToBagSpeed).SetEase(Ease.OutCubic);
+            playerBag.GetChild(i).DOLocalRotate(Vector3.zero, 3f / itemToBagSpeed);
+
+            bagItemOffsetY += bagItemOffsetYAmount;
+        }
     }
 }

@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 133997175}
   - component: {fileID: 133997177}
   - component: {fileID: 133997176}
+  - component: {fileID: 133997178}
   m_Layer: 5
   m_Name: InGameMoney
   m_TagString: Untagged
@@ -226,7 +227,7 @@ RectTransform:
   m_GameObject: {fileID: 133997174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1462404730}
@@ -234,11 +235,11 @@ RectTransform:
   m_Father: {fileID: 1971020102}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1036, y: -195}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: -150}
   m_SizeDelta: {x: 401, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &133997176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +278,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133997174}
   m_CullTransparentMesh: 1
+--- !u!114 &133997178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133997174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce7226f28d6244a38b7f1c33fb0a5c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balanceField: {fileID: 926392327}
 --- !u!1 &173423029
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +412,7 @@ RectTransform:
   m_GameObject: {fileID: 203202075}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 173423030}
@@ -670,16 +684,16 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1430300883}
-  - {fileID: 969619478}
+  - {fileID: 1920005669}
   - {fileID: 403971499}
+  - {fileID: 1314155243}
   m_Father: {fileID: 1971020102}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &345031584
 GameObject:
@@ -790,7 +804,7 @@ RectTransform:
   m_Children:
   - {fileID: 203202076}
   m_Father: {fileID: 309642246}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1289,7 +1303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 69.25, y: -0.58}
+  m_AnchoredPosition: {x: 69.25, y: -0.5800171}
   m_SizeDelta: {x: 262.5, y: 75.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688134898
@@ -1312,7 +1326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 32
+  m_text: 0 in 32
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd1ef80335925463885c3102faf7c5b6, type: 2}
   m_sharedMaterial: {fileID: -913543498892967640, guid: fd1ef80335925463885c3102faf7c5b6, type: 2}
@@ -1690,7 +1704,7 @@ GameObject:
   - component: {fileID: 926392328}
   - component: {fileID: 926392327}
   m_Layer: 5
-  m_Name: money
+  m_Name: counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1711,10 +1725,10 @@ RectTransform:
   m_Father: {fileID: 133997175}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.75, y: 3.0925}
-  m_SizeDelta: {x: 265.5, y: 93.815}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 57.499973, y: 0}
+  m_SizeDelta: {x: -115.00005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926392327
 MonoBehaviour:
@@ -1841,19 +1855,19 @@ RectTransform:
   m_GameObject: {fileID: 969619477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1330692522}
   - {fileID: 775616404}
   - {fileID: 1141714410}
-  m_Father: {fileID: 309642246}
-  m_RootOrder: 1
+  m_Father: {fileID: 1920005669}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 422, y: -730.09753}
-  m_SizeDelta: {x: 370, y: 700}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969619479
 MonoBehaviour:
@@ -1936,7 +1950,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 969619479}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1213681394}
+        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeBehaviour`2[[IdleCashSystem.Core.IdleCash,
+          Assembly-CSharp
+        m_MethodName: TryUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1065126349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,7 +2518,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1213681391}
+  - component: {fileID: 1213681393}
   - component: {fileID: 1213681392}
+  - component: {fileID: 1213681394}
   m_Layer: 0
   m_Name: Player Upgrades
   m_TagString: Untagged
@@ -2529,13 +2558,13 @@ MonoBehaviour:
   data:
     saveKey: Player_Capacity
     startLevel: 1
-    endLevel: 24
+    endLevel: 50
     startCost:
       type: 
-      value: 600
+      value: 500
     endCost:
-      type: aa
-      value: 8.91
+      type: m
+      value: 2.05
     costCurve:
       serializedVersion: 2
       m_Curve:
@@ -2565,7 +2594,7 @@ MonoBehaviour:
       value: 16
     endValue:
       type: 
-      value: 384
+      value: 256
     valueCurve:
       serializedVersion: 2
       m_Curve:
@@ -2610,6 +2639,214 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 403971500}
+        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeButton`2[[IdleCashSystem.Core.IdleCash,
+          Assembly-CSharp
+        m_MethodName: OnUpgraded
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1213681393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213681390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b0b81527f2b441eb4605c78e361a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    saveKey: Player_Speed
+    startLevel: 1
+    endLevel: 50
+    startCost:
+      type: 
+      value: 500
+    endCost:
+      type: m
+      value: 2.03
+    costCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    startValue: 1
+    endValue: 2.5
+    valueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  onLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1314155244}
+        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeButton`2[[IdleCashSystem.Core.IdleCash,
+          Assembly-CSharp
+        m_MethodName: OnLoad
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onUpgraded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1314155244}
+        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeButton`2[[IdleCashSystem.Core.IdleCash,
+          Assembly-CSharp
+        m_MethodName: OnUpgraded
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1213681394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213681390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643416bcc8b414cbc8d53e4b3b63fc99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    saveKey: Player_Magnet
+    startLevel: 1
+    endLevel: 50
+    startCost:
+      type: 
+      value: 500
+    endCost:
+      type: m
+      value: 2.07
+    costCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    startValue: 1
+    endValue: 3
+    valueCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  onLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1920005670}
+        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeButton`2[[IdleCashSystem.Core.IdleCash,
+          Assembly-CSharp
+        m_MethodName: OnLoad
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onUpgraded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1920005670}
         m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeButton`2[[IdleCashSystem.Core.IdleCash,
           Assembly-CSharp
         m_MethodName: OnUpgraded
@@ -2833,6 +3070,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289107490}
   m_CullTransparentMesh: 1
+--- !u!1 &1314155242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1314155243}
+  - component: {fileID: 1314155244}
+  m_Layer: 5
+  m_Name: Speed Upgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1314155243
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314155242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1430300883}
+  m_Father: {fileID: 309642246}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -340, y: -725}
+  m_SizeDelta: {x: 370, y: 700}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1314155244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314155242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45efe2f062b4517b0d28dbb3e05d573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  main: {fileID: 1430300883}
+  levelField: {fileID: 1081443560}
+  costField: {fileID: 1736904860}
 --- !u!1 &1330692521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,19 +3397,19 @@ RectTransform:
   m_GameObject: {fileID: 1430300882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2144597464}
   - {fileID: 610392837}
   - {fileID: 1081443559}
-  m_Father: {fileID: 309642246}
+  m_Father: {fileID: 1314155243}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -422, y: -730.09753}
-  m_SizeDelta: {x: 370, y: 700}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430300884
 MonoBehaviour:
@@ -3202,7 +3492,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1430300884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1213681393}
+        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeBehaviour`2[[IdleCashSystem.Core.IdleCash,
+          Assembly-CSharp
+        m_MethodName: TryUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1462404729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,6 +4050,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736904858}
   m_CullTransparentMesh: 1
+--- !u!1 &1920005668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920005669}
+  - component: {fileID: 1920005670}
+  m_Layer: 5
+  m_Name: Magnet Upgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1920005669
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920005668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 969619478}
+  m_Father: {fileID: 309642246}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 340, y: -725}
+  m_SizeDelta: {x: 370, y: 700}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1920005670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920005668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0932fee4e5341c4b1c28856e6fc180b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  main: {fileID: 969619478}
+  levelField: {fileID: 1141714411}
+  costField: {fileID: 1288127821}
 --- !u!1 &1971020098
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,10 +4151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3815,7 +4171,7 @@ Canvas:
   m_GameObject: {fileID: 1971020098}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1562001750}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -4014,7 +4370,7 @@ RectTransform:
   m_GameObject: {fileID: 2005284886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 753921704}
@@ -4022,11 +4378,11 @@ RectTransform:
   m_Father: {fileID: 1971020102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 399.00006, y: 1012}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: -300}
   m_SizeDelta: {x: 401, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &2005284888
 MonoBehaviour:
   m_ObjectHideFlags: 0
