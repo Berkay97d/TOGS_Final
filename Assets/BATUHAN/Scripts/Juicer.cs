@@ -9,7 +9,7 @@ public class Juicer : MonoBehaviour
     
     Queue<Fruit> fruits = new Queue<Fruit>();
 
-    private void EnqueuItem(Fruit fruit)
+    public void EnqueuItem(Fruit fruit)
     {
         fruits.Enqueue(fruit);
     }
@@ -23,7 +23,8 @@ public class Juicer : MonoBehaviour
         var pos = new Vector3(0, 0, 10);
         fruit.Throw(pos);
     }
-    private void JuiceIt()
+
+    private void Juicing()
     {
         
     }
