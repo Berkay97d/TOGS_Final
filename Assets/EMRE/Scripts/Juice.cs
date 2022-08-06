@@ -1,4 +1,3 @@
-using System;
 using EMRE.Scripts;
 using LazyDoTween.Core;
 using UnityEngine;

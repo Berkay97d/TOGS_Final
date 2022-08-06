@@ -105,23 +105,4 @@ public class PlayerRunState : PlayerBaseState
             player._playerStackTransition.SortBagItems();
         }
     }
-    
-    
-    public override void OnCollisionEnter(PlayerStateManager player, Collision collision)
-    {
-        /*if (collision.gameObject.TryGetComponent(out Item item))
-        {
-            if (item is MoneyBundle moneyBundle)
-            {
-                moneyBundle.Deposit();
-            }
-            
-            else if (!Inventory.IsFull(player._playerStackTransition.BagSize))
-            {
-                Inventory.StackItem(item.Data, IdleCash.One);
-
-                player._playerStackTransition.CollectItem(item.transform);
-            }
-        }*/
-    }
 }
