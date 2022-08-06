@@ -16,8 +16,9 @@ public class JuicesToMoney : MonoBehaviour
 
         money.transform.position = moneyOutPoint.position;
 
-        var force = moneyOutPoint.forward * 10f;
-        juice.Throw(force);
+        var topForce = moneyOutPoint.forward * 15f;
+        var leftRightForce = moneyOutPoint.right*Random.Range(-3,3);
+        money.GetComponent<Rigidbody>().AddForce(topForce+leftRightForce, ForceMode.Impulse);
         
         juice.Destroy();
     }

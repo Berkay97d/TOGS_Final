@@ -8,6 +8,8 @@ public class PlayerRunState : PlayerBaseState
     {
         base.EnterState(player);
         player._playerAnimator.RunAnimation();
+
+        CinemachineController.StandartPriority();
     }
 
     public override void UpdateState(PlayerStateManager player)
@@ -106,7 +108,7 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
         {
-            CinemachineController.InitialPriority();
+            CinemachineController.StandartPriority();
             
             player._playerStackTransition.StopJuicesMovingToShip();
 

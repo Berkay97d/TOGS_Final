@@ -227,6 +227,9 @@ public class PlayerStackTransition : MonoBehaviour
 
         SortBagItems();
         isShipCoroutineStarted = false;
+
+        yield return new WaitForSeconds(2f);
+        CinemachineController.StandartPriority();
     }
 
     public void SortBagItems()

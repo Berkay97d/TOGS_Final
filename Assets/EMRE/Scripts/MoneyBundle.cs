@@ -9,7 +9,6 @@ namespace EMRE.Scripts
     public class MoneyBundle : Item
     {
         private Transform player;
-        public Vector3 x;
 
         protected override void Start()
         {

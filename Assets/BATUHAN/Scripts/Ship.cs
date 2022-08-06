@@ -21,8 +21,8 @@ public class Ship : MonoBehaviour
 
     public void GoSellJuicesShipAnimation()
     {
-        CinemachineController.InitialPriority();
         _doLazyToggleMove.Enable();
+        CinemachineController.MoneyMaking();
     }
     public void ComeSellJuicesShipAnimation()
     {
