@@ -1,18 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using EMRE.Scripts;
+using IdleCashSystem.Core;
+using UpgradeSystem.Core;
 
-public class PlayerSpeedUpgrade : MonoBehaviour
+public class PlayerSpeedUpgrade : UpgradeBehaviour<IdleCash, float>
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override BaseUpgradeCalculator<IdleCash, float> Calculator
     {
-        
+        get => m_Calculator;
+        set => m_Calculator = (PlayerSpeedCalculator) value;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override bool CanAfford => Balance.HasEnough(Calculator.CurrentCost);
+    protected override bool CanAffordNext => Balance.HasEnough(Calculator.NextCost);
+
+
+    private PlayerSpeedCalculator m_Calculator;
+
+
+    protected override void Start()
     {
-        
+        Initialize(new PlayerSpeedCalculator());
+        base.Start();
+    }
+
+
+    protected override void PayCost(IdleCash cost)
+    {
+        Balance.TryRemove(cost);
     }
 }

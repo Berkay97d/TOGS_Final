@@ -128,7 +128,7 @@ namespace IdleCashSystem.Core
         {
             Simplify();
 
-            return TypeIndex == 0 ? $"{value}{type}" : $"{value:0.00}{type}";
+            return TypeIndex == 0 ? $"{Mathf.RoundToInt(value)}{type}" : $"{value:0.00}{type}";
         }
 
 

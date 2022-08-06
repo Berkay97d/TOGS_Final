@@ -1,5 +1,6 @@
 using EMRE.Scripts;
 using IdleCashSystem.Core;
+using UnityEngine;
 using UpgradeSystem.Core;
 
 public class PlayerCapacityUpgrade : UpgradeBehaviour<IdleCash, IdleCash>
