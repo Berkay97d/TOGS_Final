@@ -19,6 +19,12 @@ public abstract class PlayerBaseState
         superState?.UpdateState(player);
         
     }
+    
+    public virtual void OnCollisionEnter(PlayerStateManager player, Collision collision)
+    {
+        superState?.OnCollisionEnter(player, collision);
+    }
+
 
     public virtual void OnTriggerEnter(PlayerStateManager player, Collider collider)
     {

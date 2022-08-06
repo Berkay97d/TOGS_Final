@@ -6,7 +6,7 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public PlayerController _playerController;
     [HideInInspector] public PlayerAnimator _playerAnimator;
     [HideInInspector] public PlayerMovement _playerMovement;
-    
+    [HideInInspector] public PlayerStackTransition _playerStackTransition;
     
     PlayerBaseState currentState;
     
@@ -31,6 +31,7 @@ public class PlayerStateManager : MonoBehaviour
         _playerController = GetComponent<PlayerController>();
         _playerAnimator = GetComponent<PlayerAnimator>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _playerStackTransition = GetComponent<PlayerStackTransition>();
     }
     
     private void SetSuperState()
@@ -42,6 +43,11 @@ public class PlayerStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        currentState.OnCollisionEnter(this, collision);
     }
 
     private void OnTriggerEnter(Collider collider)

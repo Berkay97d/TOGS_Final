@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182190712305748119e4b83e2f68cc39, type: 3}
-  m_Name: Watermelon
+  m_Script: {fileID: 11500000, guid: 357c9972429a46c593ebbcdfe9869bbd, type: 3}
+  m_Name: New Harvestable Container
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8636934959885964343, guid: fbfa8e67f76b645d0b783ddd064dbd30, type: 3}
-  icon: {fileID: 0}
-  value:
-    type: 
-    value: 1
-  growthDuration: 5
+  _elements:
+  - {fileID: 7812820199452324187, guid: 6345b36a8e92c463ca0a0303c615d73d, type: 3}
+  - {fileID: 7812820199452324187, guid: a21e76dd7622dd245803dc5dfe4de55e, type: 3}

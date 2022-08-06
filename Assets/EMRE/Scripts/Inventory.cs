@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Helpers;
 using IdleCashSystem.Core;
+using UnityEngine;
 using UnityEngine.Events;
 
 public static class Inventory
@@ -83,9 +84,62 @@ public static class Inventory
 
         return true;
     }
-    
-    
-    [Serializable]
+
+    public static bool TryRemoveItem(Item item)
+    {
+        var data = item.Data;
+        var stock = Stock;
+
+        if (IsEmpty()) return false;
+
+        MyKeyValuePair<ItemData, IdleCash> targetPair = null;
+
+        foreach (var pair in stock)
+        {
+            if (pair.key == data)
+            {
+                targetPair = pair;
+            }
+        }
+
+        if (targetPair == null) return false;
+        
+        targetPair.value -= IdleCash.One;
+
+        if (targetPair.value <= IdleCash.Zero)
+        {
+            stock.Remove(targetPair);
+        }
+
+        Stock = stock;
+        OnChanged?.Invoke(stock);
+
+        return true;
+    }
+
+    public static IdleCash Count
+    {
+        get
+        {
+            var count = IdleCash.Zero;
+            foreach (var pair in Inventory.Stock)
+                count += pair.value;
+
+            return count;
+        }
+    }
+
+    public static bool IsFull(IdleCash size)
+    {
+        return Count < size;
+    }
+    public static bool IsEmpty()
+    {
+        return Count <= IdleCash.Zero;
+    }
+
+
+        [Serializable]
     public class MyKeyValuePair<TKey, TValue>
     {
         public TKey key;

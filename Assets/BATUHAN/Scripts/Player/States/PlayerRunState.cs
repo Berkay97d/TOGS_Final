@@ -1,3 +1,6 @@
+using System.Linq;
+using IdleCashSystem.Core;
+using LazyDoTween.Core;
 using UnityEngine;
 
 public class PlayerRunState : PlayerBaseState
@@ -45,7 +48,6 @@ public class PlayerRunState : PlayerBaseState
         var angle = Mathf.Atan2(player._playerMovement._floatingJoystick.Horizontal, player._playerMovement._floatingJoystick.Vertical) * Mathf.Rad2Deg; 
         player.transform.rotation = Quaternion.Euler(new Vector3(0, angle+180, 0));
     }
-    
 
     public override void OnTriggerStay(PlayerStateManager player, Collider collider)
     {
@@ -60,6 +62,40 @@ public class PlayerRunState : PlayerBaseState
                 case FarmLandState.Seeding:
                     player.SwitchState(player.plantState);
                     break;
+            }
+        }
+        else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
+        {
+            player._playerStackTransition.JuicerTankMoving();
+            juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Play();  
+        }
+    }
+    public override void OnTriggerExit(PlayerStateManager player, Collider collider)
+    {
+        if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
+        {
+            player._playerStackTransition.StopJuicerTankMoving();
+            juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Kill();  
+        }
+    }
+    
+    
+    public override void OnCollisionEnter(PlayerStateManager player, Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Item item))
+        {
+            if (Inventory.IsFull(player._playerStackTransition.bagSize))
+            {
+                Inventory.StackItem(item.Data, IdleCash.One);
+                Debug.Log("Collected");
+            
+                player._playerStackTransition.CollectItem(item.transform);
+            }
+            
+
+            foreach (var pair in Inventory.Stock)
+            {
+                Debug.Log("Key: "+pair.key + " | Val: " + pair.value);
             }
         }
     }

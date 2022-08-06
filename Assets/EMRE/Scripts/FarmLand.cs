@@ -18,12 +18,15 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private FarmTile farmTilePrefab;
     [SerializeField] private Transform farmTileParent;
     [SerializeField] private BoxCollider boxCollider;
-    [SerializeField] private Harvestable harvestablePrefab;
+    [SerializeField] private HarvestableContainer harvestableContainer;
     
     [Header("Values")]
     [SerializeField] private int x;
     [SerializeField] private int y;
     [SerializeField] private float size;
+
+
+    private int level = 1;
 
 
     public FarmLandState State
@@ -49,7 +52,7 @@ public class FarmLand : MonoBehaviour
         }
     }
 
-    public Harvestable CurrentHarvestable => harvestablePrefab;
+    public Harvestable CurrentHarvestable => harvestableContainer[level - 1];
     
     
     private List<FarmTile> m_FarmTiles;
