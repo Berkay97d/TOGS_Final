@@ -1,5 +1,8 @@
 using System;
+using EMRE.Scripts;
+using IdleCashSystem.Core;
 using UnityEngine;
+using UpgradeSystem.Core;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -17,6 +20,9 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerRunState runState = new PlayerRunState();
     public PlayerHarvestState harvestState = new PlayerHarvestState();
     public PlayerPlantState plantState = new PlayerPlantState();
+    
+    public float SpeedMultiplier { get; private set; }
+    public float MagnetRadius { get; private set; }
 
     private void Start()
     {
@@ -28,6 +34,38 @@ public class PlayerStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
+
+    public void OnSpeedMultiplierLoaded(UpgradeResponse<IdleCash, float> response)
+    {
+        ChangeSpeedMultiplier(response.currentValue);
+    }
+    
+    public void OnSpeedMultiplierUpgrade(UpgradeResponse<IdleCash, float> response)
+    {
+        ChangeSpeedMultiplier(response.nextValue);
+    }
+    
+    private void ChangeSpeedMultiplier(float multiplier)
+    {
+        SpeedMultiplier = multiplier;
+    }
+    
+    public void OnMagnetRadiusLoaded(UpgradeResponse<IdleCash, float> response)
+    {
+        ChangeMagnetRadius(response.currentValue);
+    }
+    
+    public void OnMagnetRadiusUpgraded(UpgradeResponse<IdleCash, float> response)
+    {
+        ChangeMagnetRadius(response.nextValue);
+    }
+    
+    private void ChangeMagnetRadius(float radius)
+    {
+        MagnetRadius = radius;
+    }
+    
+    
     private void InitilizeReferences()
     {
         _playerController = GetComponent<PlayerController>();
@@ -40,6 +78,12 @@ public class PlayerStateManager : MonoBehaviour
     {
         harvestState.SetSuperState(runState);
         plantState.SetSuperState(runState);
+    }
+
+    private void FixedUpdate()
+    {
+        currentState.OnFixedUpdate(this);
+        CheckMagnet(this);
     }
 
     private void Update()
@@ -76,5 +120,34 @@ public class PlayerStateManager : MonoBehaviour
     public bool IsActiveState(PlayerBaseState state)
     {
         return currentState == state;
+    }
+    
+    private void CheckMagnet(PlayerStateManager player)
+    {
+        var origin = player.transform.position;
+        var colliders = Physics.OverlapSphere(origin, player.MagnetRadius);
+        
+        if (colliders.Length <= 0) return;
+
+        foreach (var collider in colliders)
+        {
+            if (collider.TryGetComponent(out Item item))
+            {
+                if (item.CanCollect)
+                {
+                    if (item is MoneyBundle moneyBundle)
+                    {
+                        moneyBundle.Deposit();
+                    }
+                
+                    else if (!Inventory.IsFull(player._playerStackTransition.BagSize))
+                    {
+                        Inventory.StackItem(item.Data, IdleCash.One);
+
+                        player._playerStackTransition.CollectItem(item.transform);
+                    }
+                }
+            }
+        }
     }
 }

@@ -10,8 +10,10 @@ namespace EMRE.Scripts
     {
         private Transform player;
         public Vector3 x;
-        private void Start()
+
+        protected override void Start()
         {
+            base.Start();
             player = GameObject.Find("Player").transform;
         }
 

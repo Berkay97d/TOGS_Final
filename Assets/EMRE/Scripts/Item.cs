@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using EMRE.Scripts;
 using UnityEngine;
 
@@ -7,6 +9,8 @@ public abstract class Item : MonoBehaviour
 
 
     public ItemData Data => _data;
+    
+    public bool CanCollect { get; private set; }
     
     public Vector3 Position
     {
@@ -29,8 +33,19 @@ public abstract class Item : MonoBehaviour
     }
 
     private Rigidbody m_Body;
-    
-    
+
+
+    protected virtual void Start()
+    {
+        Invoke(nameof(MakeCollectible), _data.collectableDelay);
+    }
+
+    private void MakeCollectible()
+    {
+        CanCollect = true;
+    }
+
+
     public void Throw(Vector3 force)
     {
         Body.AddForce(force, ForceMode.VelocityChange);

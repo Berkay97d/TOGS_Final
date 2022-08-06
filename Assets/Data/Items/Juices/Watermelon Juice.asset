@@ -18,3 +18,4 @@ MonoBehaviour:
     type: 
     value: 1
   growthDuration: 0
+  collectableDelay: 1

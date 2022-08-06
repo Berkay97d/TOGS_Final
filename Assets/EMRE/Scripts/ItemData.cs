@@ -8,4 +8,5 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     public IdleCash value;
     public float growthDuration;
+    public float collectableDelay;
 }

@@ -9,8 +9,9 @@ public class Juice : Item
     [SerializeField] private DoLazyGroup doLazyGroup;
 
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         PlayAnimation();
     }
 

@@ -5,11 +5,11 @@ using EMRE.Scripts;
 using IdleCashSystem.Core;
 using LazyDoTween.Core;
 using UnityEngine;
+using UpgradeSystem.Core;
 
 public class PlayerStackTransition : MonoBehaviour
 {
     [Header("PLAYER BAG")]
-    public IdleCash bagSize;
     [SerializeField] private Transform playerBag;
     [Range(1, 10)] [SerializeField] private float itemToBagSpeed;
     private float bagItemOffsetY = 0;
@@ -33,6 +33,9 @@ public class PlayerStackTransition : MonoBehaviour
     
     private float bottleOffsetZ = 0f;
     private float bottleOffsetX = 0f;
+
+
+    public IdleCash BagSize { get; private set; }
     
     
     private void Start()
@@ -51,6 +54,23 @@ public class PlayerStackTransition : MonoBehaviour
         shipCoroutine = MoveToShip(null);
 
     }
+
+
+    public void OnSizeLoaded(UpgradeResponse<IdleCash, IdleCash> response)
+    {
+        ChangeSize(response.currentValue);
+    }
+    
+    public void OnSizeUpgraded(UpgradeResponse<IdleCash, IdleCash> response)
+    {
+        ChangeSize(response.nextValue);
+    }
+
+    private void ChangeSize(IdleCash newSize)
+    {
+        BagSize = newSize;
+    }
+    
 
     private void LoadPlayerBagFromInventory()
     {

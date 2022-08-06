@@ -40,4 +40,9 @@ public abstract class PlayerBaseState
     {
         superState?.OnTriggerExit(player, collider);
     }
+
+    public virtual void OnFixedUpdate(PlayerStateManager player)
+    {
+        superState?.OnFixedUpdate(player);
+    }
 }

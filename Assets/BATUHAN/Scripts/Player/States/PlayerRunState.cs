@@ -45,9 +45,9 @@ public class PlayerRunState : PlayerBaseState
             : 1f;
 
         player.GetComponent<Rigidbody>().velocity = new Vector3(
-            player._playerMovement._floatingJoystick.Horizontal * player._playerMovement.horizontalMovementSpeed * stateSpeedEffect, 
+            player._playerMovement._floatingJoystick.Horizontal * player._playerMovement.horizontalMovementSpeed * stateSpeedEffect * player.SpeedMultiplier, 
             0, 
-            player._playerMovement._floatingJoystick.Vertical * player._playerMovement.verticalMovementSpeed * stateSpeedEffect);
+            player._playerMovement._floatingJoystick.Vertical * player._playerMovement.verticalMovementSpeed * stateSpeedEffect * player.SpeedMultiplier);
     }
 
     private void Rotation(PlayerStateManager player)
@@ -109,19 +109,19 @@ public class PlayerRunState : PlayerBaseState
     
     public override void OnCollisionEnter(PlayerStateManager player, Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Item item))
+        /*if (collision.gameObject.TryGetComponent(out Item item))
         {
             if (item is MoneyBundle moneyBundle)
             {
                 moneyBundle.Deposit();
             }
             
-            else if (!Inventory.IsFull(player._playerStackTransition.bagSize))
+            else if (!Inventory.IsFull(player._playerStackTransition.BagSize))
             {
                 Inventory.StackItem(item.Data, IdleCash.One);
 
                 player._playerStackTransition.CollectItem(item.transform);
             }
-        }
+        }*/
     }
 }
