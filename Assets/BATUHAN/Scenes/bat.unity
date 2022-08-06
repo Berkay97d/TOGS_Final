@@ -806,13 +806,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474194414}
-  m_LocalRotation: {x: 0.010148349, y: 0.7070626, z: -0.009367835, w: 0.7070161}
-  m_LocalPosition: {x: -0.43, y: -0.049, z: -0}
+  m_LocalRotation: {x: -0.000000003259629, y: -0, z: 0.000000007916242, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8592876449565831417}
-  m_RootOrder: 3
+  m_Father: {fileID: 1492860976}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &596990632
 GameObject:
@@ -1168,6 +1168,69 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836783960}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1492860975
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8592876449565831417}
+    m_Modifications:
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7070161
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.010148349
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7070626
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.009367835
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369992020344886237, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+      propertyPath: m_Name
+      value: Berrry_Box_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6797014977172960041, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+--- !u!4 &1492860976 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 500207138654179785, guid: 57bf84fc792720d4a804ded12cb220d5, type: 3}
+  m_PrefabInstance: {fileID: 1492860975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1627394595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,7 +2818,7 @@ Transform:
   - {fileID: 8592876449565831383}
   - {fileID: 8592876449565831381}
   - {fileID: 8592876449565831373}
-  - {fileID: 474194415}
+  - {fileID: 1492860976}
   m_Father: {fileID: 8592876449565831419}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.89448655, y: -0.11925602, z: -4.053534}
