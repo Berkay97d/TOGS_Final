@@ -26,7 +26,7 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private float size;
 
 
-    private int level = 1;
+    private int level = 3;
 
 
     public FarmLandState State
