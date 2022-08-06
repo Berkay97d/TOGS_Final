@@ -76,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.8465416, z: 1}
-  m_Center: {x: 0, y: 0.9232708, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9146746121375457606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +94,6 @@ MonoBehaviour:
   farmTileParent: {fileID: 9146746121316889214}
   boxCollider: {fileID: 9146746121375457607}
   harvestableContainer: {fileID: 11400000, guid: 95869ff9d36d6094195b2f65fbd2c68d, type: 2}
-  x: 4
-  y: 8
+  x: 8
+  y: 4
   size: 1
