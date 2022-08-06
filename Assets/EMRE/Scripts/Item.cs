@@ -30,10 +30,8 @@ public abstract class Item : MonoBehaviour
     private Rigidbody m_Body;
     
     
-    public void Throw()
+    public void Throw(Vector3 force)
     {
-        var force = Random.insideUnitSphere * 10f;
-        force.y = 10f;
         Body.AddForce(force, ForceMode.VelocityChange);
     }
 }
