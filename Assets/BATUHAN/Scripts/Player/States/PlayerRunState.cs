@@ -39,10 +39,15 @@ public class PlayerRunState : PlayerBaseState
     
     private void Movement(PlayerStateManager player)
     {
+        var stateSpeedEffect = 
+            player.IsActiveState(player.plantState) || player.IsActiveState(player.harvestState)
+            ? 0.5f
+            : 1f;
+
         player.GetComponent<Rigidbody>().velocity = new Vector3(
-            player._playerMovement._floatingJoystick.Horizontal * player._playerMovement.horizontalMovementSpeed, 
+            player._playerMovement._floatingJoystick.Horizontal * player._playerMovement.horizontalMovementSpeed * stateSpeedEffect, 
             0, 
-            player._playerMovement._floatingJoystick.Vertical * player._playerMovement.verticalMovementSpeed);
+            player._playerMovement._floatingJoystick.Vertical * player._playerMovement.verticalMovementSpeed * stateSpeedEffect);
     }
 
     private void Rotation(PlayerStateManager player)
@@ -88,12 +93,16 @@ public class PlayerRunState : PlayerBaseState
         {
             player._playerStackTransition.StopJuicerTankMoving();
             juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Kill();  
+            
+            player._playerStackTransition.SortBagItems();
         }
         else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
         {
             player._cinemachineController.InitialPriority();
             
             player._playerStackTransition.StopJuicesMovingToShip();
+
+            player._playerStackTransition.SortBagItems();
         }
     }
     
