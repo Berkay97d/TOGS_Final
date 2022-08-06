@@ -21,9 +21,16 @@ public class PlayerStackTransition : MonoBehaviour
     [Range(1,10)][SerializeField] private float itemToJuicerSpeed;
     [Range(0.1f,3f)][SerializeField] private float itemToJuicerDelay;
 
+    [Header("SHIP")] 
+    [SerializeField] private Ship _ship;
+    [Range(1,10)][SerializeField] private float itemToShipSpeed;
+    [Range(0.1f,3f)][SerializeField] private float itemToShipDelay;
 
-    private IEnumerator juicerCoroutine;
-    private bool isJuicerCoroutineStarted = false;
+    [SerializeField] private int bottlesPerLine;
+
+
+    private IEnumerator juicerCoroutine, shipCoroutine;
+    private bool isJuicerCoroutineStarted = false, isShipCoroutineStarted = false;
     private void Start()
     {
         LoadPlayerBagFromInventory();
@@ -31,6 +38,8 @@ public class PlayerStackTransition : MonoBehaviour
         
         
         juicerCoroutine = MoveToJuicerTank(null);
+        shipCoroutine = MoveToShip(null);
+
     }
 
     private void LoadPlayerBagFromInventory()
@@ -115,5 +124,73 @@ public class PlayerStackTransition : MonoBehaviour
             yield return new WaitForSeconds(itemToJuicerDelay);
         }
         isJuicerCoroutineStarted = false;
+    }
+
+    
+    
+    
+    public void JuicesMovingToShip()
+    {
+        if (!Inventory.IsEmpty() && !isShipCoroutineStarted)
+        {
+            var juices = new List<Juice>();
+            for (int i = 0; i < playerBag.childCount; i++)
+            {
+                if (playerBag.GetChild(i).TryGetComponent(out Juice juice))
+                {
+                    juices.Add(juice);
+                }
+            }
+
+            shipCoroutine = MoveToShip(juices);
+            StartCoroutine(shipCoroutine);
+        }
+    }
+
+    public void StopJuicesMovingToShip()
+    {
+        StopCoroutine(shipCoroutine);
+        isShipCoroutineStarted = false;
+    }
+
+    IEnumerator MoveToShip(List<Juice> juices)
+    {
+        var bottleOffsetZ = -1f;
+        var bottleOffsetX = 0f;
+        
+        isShipCoroutineStarted = true;
+        var itemsLength = juices.Count;
+        while (itemsLength > 0)
+        {
+            if (itemsLength % bottlesPerLine == 0)
+            {
+                bottleOffsetX += 0.5f;
+                bottleOffsetZ = 0f;
+            }
+            
+            var juice = juices[--itemsLength];
+            
+            if (!juice) continue;
+            
+            juice.transform.SetParent(_ship.juicesStackPoint);
+            
+            var itemJuicesStackPointPosition = new Vector3(bottleOffsetX, 0, bottleOffsetZ);
+            juice.transform.DOLocalRotate(Vector3.zero, 3f / itemToShipSpeed);
+            juice.transform.DOLocalMove(itemJuicesStackPointPosition, 3f / itemToShipSpeed).SetEase(Ease.OutCubic)
+                .OnComplete(() =>
+                {
+
+                    if (Inventory.TryRemoveItem(juice))
+                    {
+                        _ship.GetComponent<JuicesToMoney>().MoneyMaker(juice);
+                    }
+
+                });
+            bagItemOffsetY -= bagItemOffsetYAmount;
+            bottleOffsetZ += 0.5f;
+            
+            yield return new WaitForSeconds(itemToShipDelay);
+        }
+        isShipCoroutineStarted = false;
     }
 }

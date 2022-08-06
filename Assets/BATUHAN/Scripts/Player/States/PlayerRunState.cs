@@ -2,6 +2,7 @@ using System.Linq;
 using EMRE.Scripts;
 using IdleCashSystem.Core;
 using LazyDoTween.Core;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerRunState : PlayerBaseState
@@ -50,6 +51,7 @@ public class PlayerRunState : PlayerBaseState
         player.transform.rotation = Quaternion.Euler(new Vector3(0, angle+180, 0));
     }
 
+
     public override void OnTriggerStay(PlayerStateManager player, Collider collider)
     {
         if (collider.TryGetComponent(out FarmLand farmLand))
@@ -70,6 +72,14 @@ public class PlayerRunState : PlayerBaseState
             player._playerStackTransition.JuicerTankMoving();
             juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Play();
         }
+        else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
+        {
+            player._cinemachineController.JuicesSelling();
+        
+            player._playerStackTransition.JuicesMovingToShip();
+        
+            juiceSellPoint.transform.parent.GetComponent<DoLazyRotate>().Play();
+        }
     }
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
@@ -77,6 +87,14 @@ public class PlayerRunState : PlayerBaseState
         {
             player._playerStackTransition.StopJuicerTankMoving();
             juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Kill();  
+        }
+        else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
+        {
+            player._cinemachineController.InitialPriority();
+            
+            player._playerStackTransition.StopJuicesMovingToShip();
+            
+            juiceSellPoint.transform.parent.GetComponent<DoLazyRotate>().Kill();
         }
     }
     

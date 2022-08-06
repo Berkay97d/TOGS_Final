@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
+    public CinemachineController _cinemachineController;
+    
     [HideInInspector] public PlayerController _playerController;
     [HideInInspector] public PlayerAnimator _playerAnimator;
     [HideInInspector] public PlayerMovement _playerMovement;

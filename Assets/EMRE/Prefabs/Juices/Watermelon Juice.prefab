@@ -511,6 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 7f45e2c2abdf54fe5afe13a8c118b924, type: 2}
+  moneyBundle: {fileID: 11400000, guid: 3da11f31446d84e3c9ebc14428490be5, type: 2}
   doLazyGroup: {fileID: 204726416332710648}
 --- !u!114 &5967044436642987590
 MonoBehaviour:

@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   value:
     type: 
-    value: 0
+    value: 1
   growthDuration: 0
