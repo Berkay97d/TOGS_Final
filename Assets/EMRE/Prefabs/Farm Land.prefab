@@ -96,4 +96,4 @@ MonoBehaviour:
   harvestableContainer: {fileID: 11400000, guid: 95869ff9d36d6094195b2f65fbd2c68d, type: 2}
   x: 10
   y: 5
-  size: 1
+  size: 1.4

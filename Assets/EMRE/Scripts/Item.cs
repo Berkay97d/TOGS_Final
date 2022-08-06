@@ -1,3 +1,4 @@
+using EMRE.Scripts;
 using UnityEngine;
 
 public abstract class Item : MonoBehaviour

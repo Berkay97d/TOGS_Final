@@ -74,7 +74,7 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
         {
-            if (!Inventory.IsEmpty())
+            if (!Inventory.IsEmpty() && Inventory.HasItemType<Juice>())
             {
                 player._cinemachineController.JuicesSelling();
         

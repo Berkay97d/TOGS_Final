@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9c74f403d94bdd9393b0584007597e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyBundle: {fileID: 11400000, guid: 3da11f31446d84e3c9ebc14428490be5, type: 2}
   _data: {fileID: 11400000, guid: 0540f010863d7475e8b59fb4590cb768, type: 2}
   juiceData: {fileID: 11400000, guid: 7f45e2c2abdf54fe5afe13a8c118b924, type: 2}
 --- !u!1001 &5033529309507877078
