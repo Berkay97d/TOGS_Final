@@ -2,6 +2,11 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    [SerializeField] private ItemData _data;
+
+
+    public ItemData Data => _data;
+    
     public Vector3 Position
     {
         get => transform.position;
