@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 182190712305748119e4b83e2f68cc39, type: 3}
-  m_Name: Banana
+  m_Name: Watermelon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8636934959885964343, guid: fbfa8e67f76b645d0b783ddd064dbd30, type: 3}
   icon: {fileID: 0}
   value:
     type: 
     value: 0
+  growthDuration: 5

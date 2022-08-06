@@ -2,8 +2,13 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    private Rigidbody m_Body;
-
+    public Vector3 Position
+    {
+        get => transform.position;
+        set => transform.position = value;
+    }
+    
+    
     protected Rigidbody Body
     {
         get
@@ -16,6 +21,8 @@ public abstract class Item : MonoBehaviour
             return m_Body;
         }
     }
+
+    private Rigidbody m_Body;
     
     
     public void Throw()

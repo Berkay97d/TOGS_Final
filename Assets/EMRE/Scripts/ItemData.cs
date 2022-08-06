@@ -7,4 +7,5 @@ public class ItemData : ScriptableObject
     public Item prefab;
     public Sprite icon;
     public IdleCash value;
+    public float growthDuration;
 }

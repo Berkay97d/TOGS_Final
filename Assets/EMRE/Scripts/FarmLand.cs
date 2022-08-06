@@ -1,5 +1,16 @@
+using System.Collections;
 using System.Collections.Generic;
+using EMRE.Scripts;
 using UnityEngine;
+
+
+public enum FarmLandState
+{
+    Seeding,
+    Growing,
+    Harvestable
+}
+
 
 public class FarmLand : MonoBehaviour
 {
@@ -7,6 +18,7 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private FarmTile farmTilePrefab;
     [SerializeField] private Transform farmTileParent;
     [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private Harvestable harvestablePrefab;
     
     [Header("Values")]
     [SerializeField] private int x;
@@ -14,6 +26,32 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private float size;
 
 
+    public FarmLandState State
+    {
+        get
+        {
+            foreach (var farmTile in m_FarmTiles)
+            {
+                var harvestable = farmTile.Harvestable;
+                if (harvestable)
+                {
+                    if (harvestable.IsGrown) return FarmLandState.Harvestable;
+                }
+            }
+            
+            foreach (var farmTile in m_FarmTiles)
+            {
+                var harvestable = farmTile.Harvestable;
+                if (!harvestable) return FarmLandState.Seeding;
+            }
+
+            return FarmLandState.Growing;
+        }
+    }
+
+    public Harvestable CurrentHarvestable => harvestablePrefab;
+    
+    
     private List<FarmTile> m_FarmTiles;
     private Grid m_Grid;
     
@@ -23,8 +61,29 @@ public class FarmLand : MonoBehaviour
         Build();
     }
 
+
+    public void OnSeedPlanted()
+    {
+        if (State == FarmLandState.Growing)
+        {
+            StartCoroutine(StartGrowing());
+        }
+
+        IEnumerator StartGrowing()
+        {
+            yield return null;
+            
+            foreach (var farmTile in m_FarmTiles)
+            {
+                farmTile.Harvestable.StartGrowing();
+            }
+        }
+    }
+    
+
     private void Build()
     {
+        m_FarmTiles = new List<FarmTile>();
         m_Grid = new Grid(farmTileParent.position, x, y, size);
 
         foreach (var position in m_Grid)
@@ -32,6 +91,8 @@ public class FarmLand : MonoBehaviour
             var newFarmTile = Instantiate(farmTilePrefab, farmTileParent);
             newFarmTile.Position = position;
             newFarmTile.SetSize(size);
+            newFarmTile.Inject(this);
+            m_FarmTiles.Add(newFarmTile);
         }
 
         var boxColliderSize = boxCollider.size;

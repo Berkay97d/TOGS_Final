@@ -1,7 +1,15 @@
+using EMRE.Scripts;
 using UnityEngine;
 
 public class FarmTile : MonoBehaviour
 {
+    private FarmLand m_FarmLand;
+    private Harvestable m_Harvestable;
+
+
+    public Harvestable Harvestable => m_Harvestable;
+    
+    
     public Vector3 Position
     {
         get => transform.position;
@@ -13,7 +21,12 @@ public class FarmTile : MonoBehaviour
         get => transform.localScale;
         private set => transform.localScale = value;
     }
-    
+
+
+    public void Inject(FarmLand farmLand)
+    {
+        m_FarmLand = farmLand;
+    }
     
     public void SetSize(float size)
     {
@@ -21,5 +34,19 @@ public class FarmTile : MonoBehaviour
         oldSize.x = size;
         oldSize.z = size;
         Size = oldSize;
+    }
+
+    public bool TryPlantSeed()
+    {
+        if (m_Harvestable) return false;
+
+        if (m_FarmLand.State != FarmLandState.Seeding) return false;
+        
+        m_Harvestable = Instantiate(m_FarmLand.CurrentHarvestable, transform);
+        m_Harvestable.Position = transform.position;
+        
+        m_FarmLand.OnSeedPlanted();
+
+        return true;
     }
 }

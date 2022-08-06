@@ -48,6 +48,12 @@ public class PlayerStateManager : MonoBehaviour
     {
         currentState.OnTriggerEnter(this, collider);
     }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        currentState.OnTriggerStay(this, collider);
+    }
+
     private void OnTriggerExit(Collider collider)
     {
         currentState.OnTriggerExit(this, collider);

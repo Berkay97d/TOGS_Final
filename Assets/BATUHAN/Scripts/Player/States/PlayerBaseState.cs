@@ -24,6 +24,11 @@ public abstract class PlayerBaseState
     {
         superState?.OnTriggerEnter(player, collider);
     }
+    
+    public virtual void OnTriggerStay(PlayerStateManager player, Collider collider)
+    {
+        superState?.OnTriggerStay(player, collider);
+    }
 
     public virtual void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
