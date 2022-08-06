@@ -1,8 +1,5 @@
-using System.Linq;
 using EMRE.Scripts;
-using IdleCashSystem.Core;
 using LazyDoTween.Core;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerRunState : PlayerBaseState
@@ -87,6 +84,17 @@ public class PlayerRunState : PlayerBaseState
             }
         }
     }
+
+    public override void OnTriggerEnter(PlayerStateManager player, Collider collider)
+    {
+        base.OnTriggerEnter(player, collider);
+
+        if (collider.TryGetComponent(out PlayerUpgradeAltar altar))
+        {
+            altar.Enable();
+        }
+    }
+
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
         if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
@@ -103,6 +111,11 @@ public class PlayerRunState : PlayerBaseState
             player._playerStackTransition.StopJuicesMovingToShip();
 
             player._playerStackTransition.SortBagItems();
+        }
+        
+        if (collider.TryGetComponent(out PlayerUpgradeAltar altar))
+        {
+            altar.Disable();
         }
     }
 }
