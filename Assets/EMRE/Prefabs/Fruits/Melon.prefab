@@ -160,3 +160,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: b2c5fd3aadb58b944a14be17ca025751, type: 2}
+  juiceData: {fileID: 0}

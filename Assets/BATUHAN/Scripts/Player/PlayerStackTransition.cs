@@ -52,7 +52,6 @@ public class PlayerStackTransition : MonoBehaviour
     {
         Destroy(item.GetComponent<Rigidbody>());
         Destroy(item.GetComponent<SphereCollider>());
-        //Destroy(item.GetComponent<Item>());
 
         item.SetParent(playerBag);
         
@@ -67,11 +66,16 @@ public class PlayerStackTransition : MonoBehaviour
     {
         if (!Inventory.IsEmpty() && !isJuicerCoroutineStarted)
         {
-            Transform[] playerBagChilds = new Transform[playerBag.childCount];
+            var fruits = new List<Fruit>();
             for (int i = 0; i < playerBag.childCount; i++)
-                playerBagChilds[i] = playerBag.GetChild(i);
+            {
+                if (playerBag.GetChild(i).TryGetComponent(out Fruit fruit))
+                {
+                    fruits.Add(fruit);
+                }
+            }
 
-            juicerCoroutine = MoveToJuicerTank(playerBagChilds);
+            juicerCoroutine = MoveToJuicerTank(fruits);
             StartCoroutine(juicerCoroutine);
         }
     }
@@ -82,24 +86,27 @@ public class PlayerStackTransition : MonoBehaviour
         isJuicerCoroutineStarted = false;
     }
 
-    IEnumerator MoveToJuicerTank(Transform[] items)
+    IEnumerator MoveToJuicerTank(List<Fruit> fruits)
     {
         isJuicerCoroutineStarted = true;
-        var itemsLength = items.Length;
-        Debug.Log(itemsLength);
+        var itemsLength = fruits.Count;
         while (itemsLength > 0)
         {
-            items[--itemsLength].SetParent(juicerTank, true);
+            var fruit = fruits[--itemsLength];
+            
+            if (!fruit) continue;
+            
+            fruit.transform.SetParent(juicerTank, true);
 
             var itemJuicerTankPosition = new Vector3(0, 0, 0);
-            items[itemsLength].DOLocalRotate(Vector3.zero, 3f / itemToJuicerSpeed);
-            items[itemsLength].DOLocalMove(itemJuicerTankPosition, 3f / itemToJuicerSpeed).SetEase(Ease.OutCubic)
+            fruit.transform.DOLocalRotate(Vector3.zero, 3f / itemToJuicerSpeed);
+            fruit.transform.DOLocalMove(itemJuicerTankPosition, 3f / itemToJuicerSpeed).SetEase(Ease.OutCubic)
                 .OnComplete(() =>
                 {
 
-                    if (Inventory.TryRemoveItem(items[itemsLength].GetComponent<Item>()))
+                    if (Inventory.TryRemoveItem(fruit))
                     {
-                        _juicer.GetComponent<Juicer>().EnqueuItem( items[itemsLength].GetComponent<Fruit>());
+                        _juicer.GetComponent<Juicer>().JuiceFruit(fruit);
                     }
 
                 });

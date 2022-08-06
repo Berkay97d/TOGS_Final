@@ -34,4 +34,9 @@ public abstract class Item : MonoBehaviour
     {
         Body.AddForce(force, ForceMode.VelocityChange);
     }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }

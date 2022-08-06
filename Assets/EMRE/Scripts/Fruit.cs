@@ -10,7 +10,6 @@ namespace EMRE.Scripts
         public Juice TurnToJuice()
         {
             var juice = Instantiate(juiceData.prefab);
-            Destroy(gameObject);
             return (Juice) juice;
         }
     }

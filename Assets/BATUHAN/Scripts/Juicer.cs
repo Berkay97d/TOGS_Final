@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using EMRE.Scripts;
@@ -6,26 +7,34 @@ using UnityEngine;
 public class Juicer : MonoBehaviour
 {
     [SerializeField] private Transform juiceOutPoint;
-    
-    Queue<Fruit> fruits = new Queue<Fruit>();
 
-    public void EnqueuItem(Fruit fruit)
+    private static readonly WaitForSecondsRealtime JuiceInterval = new WaitForSecondsRealtime(0.1f);
+    
+    
+    public void JuiceFruit(Fruit fruit)
     {
-        fruits.Enqueue(fruit);
-    }
-    private void DequeuItem()
-    {
-        var fruit = fruits.Dequeue();
         var juice = fruit.TurnToJuice();
 
         juice.transform.position = juiceOutPoint.position;
 
-        var pos = new Vector3(0, 0, 10);
-        fruit.Throw(pos);
-    }
-
-    private void Juicing()
-    {
+        var force = juiceOutPoint.forward * 10f;
+        juice.Throw(force);
         
+        fruit.Destroy();
     }
+    /*private void DequeueFruit()
+    {
+        if (!m_Fruits.TryDequeue(out var fruit)) return;
+        
+        if (!fruit) return;
+        
+        var juice = fruit.TurnToJuice();
+
+        juice.transform.position = juiceOutPoint.position;
+
+        var force = juiceOutPoint.forward * 10f;
+        juice.Throw(force);
+        
+        fruit.Destroy();
+    }*/
 }

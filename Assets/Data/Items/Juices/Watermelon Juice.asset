@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182190712305748119e4b83e2f68cc39, type: 3}
   m_Name: Watermelon Juice
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8140235616621980877, guid: 6bbb45e3ac3c94a7897314f9a3ecaa5e, type: 3}
   icon: {fileID: 0}
   value:
     type: 
