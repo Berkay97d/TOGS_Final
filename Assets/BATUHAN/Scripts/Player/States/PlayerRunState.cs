@@ -81,7 +81,7 @@ public class PlayerRunState : PlayerBaseState
         {
             if (!Inventory.IsEmpty() && Inventory.HasItemType<Juice>())
             {
-                player._cinemachineController.JuicesSelling();
+                CinemachineController.JuicesSelling();
         
                 player._playerStackTransition.JuicesMovingToShip();
             }
@@ -98,7 +98,7 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
         {
-            player._cinemachineController.InitialPriority();
+            CinemachineController.InitialPriority();
             
             player._playerStackTransition.StopJuicesMovingToShip();
 

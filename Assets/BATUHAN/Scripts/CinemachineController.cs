@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Helpers;
 using UnityEngine;
 
-public class CinemachineController : MonoBehaviour
+public class CinemachineController : Scenegleton<CinemachineController>
 {
     [SerializeField] private CinemachineBrain cinemachineBrain;
 
@@ -16,15 +17,15 @@ public class CinemachineController : MonoBehaviour
         InitialPriority();
     }
 
-    public void InitialPriority()
+    public static void InitialPriority()
     {
-        standartCam.Priority = 1;
-        juicesSellingCam.Priority = 0;
+        Instance.standartCam.Priority = 1;
+        Instance.juicesSellingCam.Priority = 0;
     }
 
-    public void JuicesSelling()
+    public static void JuicesSelling()
     {
-        standartCam.Priority = 0;
-        juicesSellingCam.Priority = 1;
+        Instance.standartCam.Priority = 0;
+        Instance.juicesSellingCam.Priority = 1;
     }
 }
