@@ -9,6 +9,7 @@ namespace EMRE.Scripts
     public class MoneyBundle : Item
     {
         private Transform player;
+        private bool m_IsDeposit;
 
         protected override void Start()
         {
@@ -26,6 +27,10 @@ namespace EMRE.Scripts
 
         public void Deposit()
         {
+            if (m_IsDeposit) return;
+
+            m_IsDeposit = true;
+            
             Balance.Add(Value);
             MoveMoneyBundleToCashUI();
             //Destroy();
