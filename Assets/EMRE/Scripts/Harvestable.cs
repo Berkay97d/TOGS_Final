@@ -85,7 +85,7 @@ namespace EMRE.Scripts
         {
             var newItem = Instantiate(item.prefab);
             newItem.Position = transform.position;
-            var force = Random.insideUnitSphere * 10f;
+            var force = Random.insideUnitSphere * 5;
             force.y = 10f;
             newItem.Throw(force);
             Destroy(gameObject);
