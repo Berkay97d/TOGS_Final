@@ -23,6 +23,6 @@ public class InGameAds : Scenegleton<InGameAds>
 
         DummyAdsManager
             .BuildRewardedDummyAd(DummyAdOrientation.Portrait)
-            .SetDuration(5);
+            .SetDuration(3);
     }
 }
