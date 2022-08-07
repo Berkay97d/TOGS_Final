@@ -159,6 +159,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9c74f403d94bdd9393b0584007597e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyBundle: {fileID: 11400000, guid: 3da11f31446d84e3c9ebc14428490be5, type: 2}
   _data: {fileID: 11400000, guid: b2c5fd3aadb58b944a14be17ca025751, type: 2}
-  juiceData: {fileID: 0}
+  juiceData: {fileID: 11400000, guid: 93f0fad46c4db437da6e57bf2d4f9ba4, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Watermelon
   m_EditorClassIdentifier: 
   prefab: {fileID: 8636934959885964343, guid: fbfa8e67f76b645d0b783ddd064dbd30, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3ff78400a2b2849e3b9c1726ad236668, type: 3}
   value:
     type: 
     value: 1

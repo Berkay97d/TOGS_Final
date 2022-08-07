@@ -8,4 +8,6 @@ public class Container<T> : ScriptableObject
 
 
     public T this[int index] => _elements[index];
+
+    public int Count => _elements.Length;
 }

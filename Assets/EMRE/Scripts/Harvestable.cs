@@ -19,6 +19,8 @@ namespace EMRE.Scripts
             get => transform.position;
             set => transform.position = value;
         }
+
+        public ItemData Data => item;
         
         
         private Vector3 m_PlantSize;

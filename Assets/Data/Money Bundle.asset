@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Money Bundle
   m_EditorClassIdentifier: 
   prefab: {fileID: 5419962267960606925, guid: 046ff04c87e3944e9b5c9f6f2bf489f0, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: afdb710c44cd5884eb8965a8b595f676, type: 3}
   value:
     type: 
     value: 0

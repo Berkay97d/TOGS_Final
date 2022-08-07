@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using EMRE.Scripts;
+using NaughtyAttributes;
 using UnityEngine;
 
 
@@ -20,6 +21,7 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private Transform farmTileParent;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private HarvestableContainer harvestableContainer;
+    [SerializeField] private FarmLandSign sign;
     [SerializeField] private GameObject locks;
     [SerializeField] private bool unlockOnStart;
     
@@ -29,7 +31,7 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private float size;
 
 
-    private int level = 1;
+    private int m_Level = 1;
 
 
     public FarmLandState State
@@ -57,7 +59,7 @@ public class FarmLand : MonoBehaviour
         }
     }
 
-    public Harvestable CurrentHarvestable => harvestableContainer[level - 1];
+    public Harvestable CurrentHarvestable => harvestableContainer[m_Level - 1];
     
     
     private List<FarmTile> m_FarmTiles;
@@ -92,9 +94,19 @@ public class FarmLand : MonoBehaviour
         }
     }
 
+    [Button(enabledMode: EButtonEnableMode.Playmode)]
     public void Unlock()
     {
         locks.SetActive(false);
+        sign.Unlock(CurrentHarvestable.Data.icon);
+    }
+
+    [Button(enabledMode: EButtonEnableMode.Playmode)]
+    public void Upgrade()
+    {
+        m_Level++;
+        m_Level = Mathf.Min(m_Level, harvestableContainer.Count);
+        sign.Unlock(CurrentHarvestable.Data.icon);
     }
     
 
