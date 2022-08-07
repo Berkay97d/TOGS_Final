@@ -24,6 +24,8 @@ public class CinemachineController : Scenegleton<CinemachineController>
         
         ClearTutorialCams();
         ClearPlayerCams();
+
+        InitialPriority();
     }
 
     public static void Tutorial()
@@ -33,9 +35,9 @@ public class CinemachineController : Scenegleton<CinemachineController>
 
     public static void InitialPriority()
     {
-        Instance.initialCam.Priority = 0;
+        Instance.initialCam.Priority = 3;
         Instance.standartCam.Priority = 0;
-        Instance.juicesSellingCam.Priority = 1;
+        Instance.juicesSellingCam.Priority = 0;
         Instance.moneyMakingCam.Priority = 0;
     }
 
