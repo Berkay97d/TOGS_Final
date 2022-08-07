@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void UpdateState(PlayerStateManager player)
     {
-        if (Input.touchCount > 0 && !player._playerController.IsPointerOverUIObjects())
+        if (Input.touchCount > 0)
         {
             player.SwitchState(player.runState);
         }
