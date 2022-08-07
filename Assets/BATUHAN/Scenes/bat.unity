@@ -5599,7 +5599,7 @@ RectTransform:
   m_GameObject: {fileID: 1117875495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 550731127}
@@ -6473,6 +6473,10 @@ PrefabInstance:
       propertyPath: upgradableLazyToggleGroup
       value: 
       objectReference: {fileID: 1050290442}
+    - target: {fileID: 5545956081603834683, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9067764865150842342, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.199999
@@ -8140,9 +8144,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeBehaviour`2[[IdleCashSystem.Core.IdleCash,
-          Assembly-CSharp
-        m_MethodName: TryUpgrade
+        m_TargetAssemblyTypeName: FarmLand, Assembly-CSharp
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9232,9 +9235,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeBehaviour`2[[IdleCashSystem.Core.IdleCash,
-          Assembly-CSharp
-        m_MethodName: TryUpgrade
+        m_TargetAssemblyTypeName: FarmLand, Assembly-CSharp
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -100,7 +100,7 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out FarmLandHub farmLandHub))
         {
-            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart)
+            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart) // temp
                 farmLandHub.EnableUpgradable();
             else
                 farmLandHub.EnableUnlockable();
@@ -131,7 +131,7 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out FarmLandHub farmLandHub))
         {
-            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart)
+            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart)  // temp
                 farmLandHub.DisableUpgradable();
             else
                 farmLandHub.DisableUnlockable();
