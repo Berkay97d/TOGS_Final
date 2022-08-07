@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 8140235616621980877, guid: 074a578f8ca374cb08f48dffef3f7d7a, type: 3}
   icon: {fileID: 0}
   value:
-    type: m
-    value: 488.2813
+    type: k
+    value: 150
   growthDuration: 0
   collectableDelay: 1
