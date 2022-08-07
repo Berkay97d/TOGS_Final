@@ -20,4 +20,12 @@ MonoBehaviour:
     landscapeAdSprite: {fileID: 21300000, guid: 44b5b617d3fcd4b70aa13e8816b2ff29, type: 3}
     portraitAdSprite: {fileID: 21300000, guid: f8a1aa2e168854998ac9460c64f57b02, type: 3}
     url: 
-  adDatas: []
+  adDatas:
+  - name: Anka Games
+    landscapeAdSprite: {fileID: 0}
+    portraitAdSprite: {fileID: 21300000, guid: 20f4935bfaa1247c298c13ec8ccd8f0f, type: 3}
+    url: https://linktr.ee/AnkaYazilim
+  - name: Anka Games
+    landscapeAdSprite: {fileID: 0}
+    portraitAdSprite: {fileID: 21300000, guid: a7bb711dfb7c8467a873cd6d7cfc1f9c, type: 3}
+    url: https://apps.apple.com/tr/app/idle-vacuumer-3d/id1608673231?l=tr
