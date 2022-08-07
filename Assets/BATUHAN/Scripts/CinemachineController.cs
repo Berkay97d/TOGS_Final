@@ -1,5 +1,6 @@
 using Cinemachine;
 using Helpers;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class CinemachineController : Scenegleton<CinemachineController>
@@ -7,11 +8,11 @@ public class CinemachineController : Scenegleton<CinemachineController>
     [SerializeField] private CinemachineBrain cinemachineBrain;
     
     [Header("Tutorial Virtual Cameras")]
-    [SerializeField] private CinemachineVirtualCamera farmCam;
-    [SerializeField] private CinemachineVirtualCamera juicerCam;
-    [SerializeField] private CinemachineVirtualCamera sellerCam;
-    [SerializeField] private CinemachineVirtualCamera gainCam;
-    [SerializeField] private CinemachineVirtualCamera upgradeCam;
+    [SerializeField] private CinemachineVirtualCamera tutorialFarmCam;
+    [SerializeField] private CinemachineVirtualCamera tutorialJuicerCam;
+    [SerializeField] private CinemachineVirtualCamera tutorialSellerCam;
+    [SerializeField] private CinemachineVirtualCamera tutorialGainCam;
+    [SerializeField] private CinemachineVirtualCamera tutorialUpgradeCam;
 
     [Header("Player Virtual Cameras:")]
     [SerializeField] private CinemachineVirtualCamera initialCam;
@@ -20,8 +21,6 @@ public class CinemachineController : Scenegleton<CinemachineController>
     [SerializeField] private CinemachineVirtualCamera moneyMakingCam;
     private void Start()
     {
-        // InitialPriority();
-        
         ClearTutorialCams();
         ClearPlayerCams();
 
@@ -30,57 +29,71 @@ public class CinemachineController : Scenegleton<CinemachineController>
 
     public static void Tutorial()
     {
-        
+        TutorialFarmPriority();
+        Instance.Invoke(nameof(TutorialJuicerPriority), 1f);
+
     }
 
     public static void InitialPriority()
     {
-        Instance.initialCam.Priority = 3;
-        Instance.standartCam.Priority = 0;
-        Instance.juicesSellingCam.Priority = 0;
-        Instance.moneyMakingCam.Priority = 0;
+        ClearPlayerCams();
+        Instance.initialCam.Priority = 1;
     }
-
     public static void StandartPriority()
     {
-        Instance.initialCam.Priority = 0;
-        Instance.standartCam.Priority = 3;
-        Instance.juicesSellingCam.Priority = 0;
-        Instance.moneyMakingCam.Priority = 0;
+        ClearPlayerCams();
+        Instance.standartCam.Priority = 1;
     }
-
     public static void JuicesSelling()
     {
-        Instance.initialCam.Priority = 0;
-        Instance.standartCam.Priority = 0;
-        Instance.juicesSellingCam.Priority = 3;
-        Instance.moneyMakingCam.Priority = 0;
+        ClearPlayerCams();
+        Instance.juicesSellingCam.Priority = 1;
     }
-
     public static void MoneyMaking()
+    {
+        ClearPlayerCams();
+        Instance.moneyMakingCam.Priority = 1;
+    }
+    private static void ClearPlayerCams()
     {
         Instance.initialCam.Priority = 0;
         Instance.standartCam.Priority = 0;
         Instance.juicesSellingCam.Priority = 0;
-        Instance.moneyMakingCam.Priority = 3;
-    }
-    
-    
-
-    private void ClearPlayerCams()
-    {
-        initialCam.Priority = 0;
-        standartCam.Priority = 0;
-        juicesSellingCam.Priority = 0;
-        moneyMakingCam.Priority = 0;
+        Instance.moneyMakingCam.Priority = 0;
     }
 
-    private void ClearTutorialCams()
+    
+    public static void TutorialFarmPriority()
     {
-        farmCam.Priority = 0;
-        juicerCam.Priority = 0;
-        sellerCam.Priority = 0;
-        gainCam.Priority = 0;
-        upgradeCam.Priority = 0;
+        ClearTutorialCams();
+        Instance.tutorialFarmCam.Priority = 1;
+    }
+    public static void TutorialJuicerPriority()
+    {
+        ClearTutorialCams();
+        Instance.tutorialJuicerCam.Priority = 1;
+    }
+    public static void TutorialSellerPriority()
+    {
+        ClearTutorialCams();
+        Instance.tutorialSellerCam.Priority = 1;
+    }
+    public static void TutorialGainPriority()
+    {
+        ClearTutorialCams();
+        Instance.tutorialGainCam.Priority = 1;
+    }
+    public static void TutorialUpgradePriority()
+    {
+        ClearTutorialCams();
+        Instance.tutorialUpgradeCam.Priority = 1;
+    }
+    private static void ClearTutorialCams()
+    {
+        Instance.tutorialFarmCam.Priority = 0;
+        Instance.tutorialJuicerCam.Priority = 0;
+        Instance.tutorialSellerCam.Priority = 0;
+        Instance.tutorialGainCam.Priority = 0;
+        Instance.tutorialUpgradeCam.Priority = 0;
     }
 }
