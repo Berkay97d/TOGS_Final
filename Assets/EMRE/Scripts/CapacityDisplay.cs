@@ -12,6 +12,8 @@ namespace EMRE.Scripts
         
         
         [SerializeField] private TMP_Text capacityField;
+        [SerializeField] private Color emptyColor;
+        [SerializeField] private Color fullColor;
 
 
         private IdleCash m_Capacity;
@@ -39,6 +41,8 @@ namespace EMRE.Scripts
 
         private void UpdateDisplay()
         {
+            var rate = m_ItemCount / m_Capacity;
+            capacityField.color = Color.Lerp(emptyColor, fullColor, rate);
             capacityField.text = $"{m_ItemCount} {Middle} {m_Capacity}";
         }
     }

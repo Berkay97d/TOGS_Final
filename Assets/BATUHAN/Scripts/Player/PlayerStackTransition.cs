@@ -30,9 +30,8 @@ public class PlayerStackTransition : MonoBehaviour
 
     private IEnumerator juicerCoroutine, shipCoroutine;
     private bool isJuicerCoroutineStarted = false, isShipCoroutineStarted = false;
-    
-    private float bottleOffsetZ = 0f;
-    private float bottleOffsetX = 0f;
+
+    private float bottleOffsetZ, bottleOffsetX;
 
 
     public IdleCash BagSize { get; private set; }
@@ -196,12 +195,20 @@ public class PlayerStackTransition : MonoBehaviour
         var itemsLength = juices.Count;
         while (itemsLength > 0)
         {
-            if (itemsLength >= bottlesPerLine && itemsLength % bottlesPerLine == 0)
+            if (itemsLength >= bottlesPerLine)
             {
-                bottleOffsetX += 0.5f;
-                bottleOffsetZ = 0f;
+                if (itemsLength % bottlesPerLine*bottlesPerLine == 0)
+                {
+                    bottleOffsetZ = 0f;
+                    bottleOffsetX = 0f;
+                }
+                else if (itemsLength % bottlesPerLine == 0) 
+                {
+                     bottleOffsetX += 0.5f;
+                     bottleOffsetZ = 0f; 
+                }
             }
-            
+
             var juice = juices[--itemsLength];
             
             if (!juice) continue;
