@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using EMRE.Scripts;
+using EMRE.Scripts.Worker;
+using IdleCashSystem.Core;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -24,6 +26,7 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private FarmLandUpgradeDataContainer upgradeDataContainer;
     [SerializeField] private FarmLandSign sign;
     [SerializeField] private GameObject locks;
+    [SerializeField] private Worker worker;
     [SerializeField] private bool unlockOnStart;
     
     [Header("Values")]
@@ -37,6 +40,7 @@ public class FarmLand : MonoBehaviour
 
 
     public bool IsLocked => State == FarmLandState.Locked;
+    public bool HasWorker => worker.IsActive;
 
     public FarmLandState State
     {
@@ -124,6 +128,17 @@ public class FarmLand : MonoBehaviour
         {
             locks.SetActive(false);
             sign.Unlock(CurrentHarvestable.Data.icon);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool TryUnlockWorker()
+    {
+        if (Balance.TryRemove(IdleCash.One * 10000))
+        {
+            worker.Enable();
             return true;
         }
 

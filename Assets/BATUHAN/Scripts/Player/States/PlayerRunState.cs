@@ -116,6 +116,11 @@ public class PlayerRunState : PlayerBaseState
             else
             {
                 farmLandHub.EnableUpgradable();
+                
+                if (!farmLandHub.HasWorker)
+                {
+                    farmLandHub.EnableWorkerUnlock();
+                }
             }
         }
         else if (collider.TryGetComponent(out MoneyCrate moneyCrate))
@@ -151,6 +156,7 @@ public class PlayerRunState : PlayerBaseState
         {
             farmLandHub.DisableUnlockable();
             farmLandHub.DisableUpgradable();
+            farmLandHub.DisableWorkerUnlock();
         }
         else if (collider.TryGetComponent(out MoneyCrate moneyCrate))
         {

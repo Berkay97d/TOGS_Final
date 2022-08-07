@@ -7,10 +7,12 @@ public class FarmLandHub : MonoBehaviour
     [SerializeField] private FarmLand farmLand;
     [SerializeField] private DoLazyToggleGroup 
         upgradableLazyToggleGroup, 
-        unlockableLazyToggleGroup;
+        unlockableLazyToggleGroup,
+        workerUnlockLazyToggleGroup;
 
 
     public bool IsLocked => farmLand.IsLocked;
+    public bool HasWorker => farmLand.HasWorker;
     public FarmLand FarmLand => farmLand;
     
 
@@ -40,11 +42,31 @@ public class FarmLandHub : MonoBehaviour
         unlockableLazyToggleGroup.Disable();
     }
 
+    [Button()]
+    public void EnableWorkerUnlock()
+    {
+        workerUnlockLazyToggleGroup.Enable();
+    }
+    
+    [Button()]
+    public void DisableWorkerUnlock()
+    {
+        workerUnlockLazyToggleGroup.Disable();
+    }
+
     public void Unlock()
     {
         if (farmLand.TryUnlock())
         {
             DisableUnlockable();
+        }
+    }
+
+    public void UnlockWorker()
+    {
+        if (farmLand.TryUnlockWorker())
+        {
+            DisableWorkerUnlock();
         }
     }
     

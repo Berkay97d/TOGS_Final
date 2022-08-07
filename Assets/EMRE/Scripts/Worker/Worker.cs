@@ -12,7 +12,22 @@ namespace EMRE.Scripts.Worker
 
         public FarmLandState FarmLandState => farmLand.State;
 
+        
+        public bool IsActive { get; private set; }
+        
 
+        public void Enable()
+        {
+            gameObject.SetActive(true);
+            IsActive = true;
+        }
+
+        public void Disable()
+        {
+            gameObject.SetActive(false);
+            IsActive = false;
+        }
+        
         public FarmTile GetTargetTile(FarmTileState state)
         {
             return farmLand.FindTile(state);
@@ -23,6 +38,7 @@ namespace EMRE.Scripts.Worker
             if (!tile)
             {
                 body.velocity = Vector3.zero;
+                return;
             }
             
             var currentPosition = transform.position;

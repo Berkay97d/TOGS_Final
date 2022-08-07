@@ -16,6 +16,11 @@ namespace EMRE.Scripts
         {
             Instance.m_SelectedFarmLand.Unlock();
         }
+
+        public static void UnlockWorkerSelected()
+        {
+            Instance.m_SelectedFarmLand.UnlockWorker();
+        }
         
         public static void UpgradeSelected()
         {
