@@ -85,6 +85,20 @@ public class FarmLand : MonoBehaviour
     }
 
 
+    public FarmTile FindTile(FarmTileState state)
+    {
+
+        foreach (var tile in m_FarmTiles)
+        {
+            if (tile.State == state)
+            {
+                return tile;
+            }
+        }
+
+        return null;
+    }
+    
     public void OnSeedPlanted()
     {
         if (State == FarmLandState.Growing)

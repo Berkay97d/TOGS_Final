@@ -7,5 +7,11 @@ namespace EMRE.Scripts.Worker
             base.OnEnter(brain);
             brain.RunAnimation();
         }
+
+        public override void OnFixedUpdate(WorkerBrain brain)
+        {
+            base.OnFixedUpdate(brain);
+            brain.HandleMovement();
+        }
     }
 }

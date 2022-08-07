@@ -20,5 +20,10 @@ namespace EMRE.Scripts.Worker
         {
             m_SuperState?.OnExit(brain);
         }
+        
+        public virtual void OnFixedUpdate(WorkerBrain brain)
+        {
+            m_SuperState?.OnExit(brain);
+        }
     }
 }

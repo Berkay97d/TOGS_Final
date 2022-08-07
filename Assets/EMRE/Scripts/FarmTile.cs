@@ -1,6 +1,15 @@
 using EMRE.Scripts;
 using UnityEngine;
 
+
+public enum FarmTileState
+{
+    Empty,
+    Growing,
+    Grown
+}
+
+
 public class FarmTile : MonoBehaviour
 {
     private FarmLand m_FarmLand;
@@ -8,6 +17,19 @@ public class FarmTile : MonoBehaviour
 
 
     public Harvestable Harvestable => m_Harvestable;
+
+
+    public FarmTileState State
+    {
+        get
+        {
+            if (!m_Harvestable) return FarmTileState.Empty;
+
+            return m_Harvestable.IsGrown
+                ? FarmTileState.Grown
+                : FarmTileState.Growing;
+        }
+    }
     
     
     public Vector3 Position

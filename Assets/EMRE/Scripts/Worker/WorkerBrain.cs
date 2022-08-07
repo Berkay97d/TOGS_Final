@@ -6,6 +6,7 @@ namespace EMRE.Scripts.Worker
 {
     public class WorkerBrain : MonoBehaviour
     {
+        [SerializeField] private Worker worker;
         [SerializeField] private PlayerAnimator animator;
 
 
@@ -16,6 +17,7 @@ namespace EMRE.Scripts.Worker
         
 
         private WorkerBaseState m_CurrentState;
+        private FarmTile m_TargetTile;
 
 
         private void Start()
@@ -24,29 +26,18 @@ namespace EMRE.Scripts.Worker
             SwitchState(Idle);
         }
 
-        [Button(enabledMode: EButtonEnableMode.Playmode)]
-        private void IdleTest()
+        private void FixedUpdate()
         {
-            SwitchState(Idle);
+            //m_CurrentState?.OnFixedUpdate(this);
+            HandleMovement();
+        }
+
+        private void Update()
+        {
+            CalculateState();
+            CalculateTargetTile();
         }
         
-        [Button(enabledMode: EButtonEnableMode.Playmode)]
-        private void RunTest()
-        {
-            SwitchState(Run);
-        }
-        
-        [Button(enabledMode: EButtonEnableMode.Playmode)]
-        private void PlantTest()
-        {
-            SwitchState(Plant);
-        }
-        
-        [Button(enabledMode: EButtonEnableMode.Playmode)]
-        private void HarvestTest()
-        {
-            SwitchState(Harvest);
-        }
 
         private void SetSuperStates()
         {
@@ -54,6 +45,11 @@ namespace EMRE.Scripts.Worker
             Plant.SetSuperState(Run);
         }
 
+
+        public void HandleMovement()
+        {
+            worker.HandleMovement(m_TargetTile);
+        }
 
         public void IdleAnimation()
         {
@@ -80,6 +76,65 @@ namespace EMRE.Scripts.Worker
             m_CurrentState?.OnExit(this);
             m_CurrentState = state;
             state?.OnEnter(this);
+        }
+
+
+        private void CalculateState()
+        {
+            switch (worker.FarmLandState)
+            {
+                case FarmLandState.Growing:
+                    SwitchState(Idle);
+                    break;
+                
+                case FarmLandState.Seeding:
+                    SwitchState(Plant);
+                    break;
+                
+                case FarmLandState.Harvestable:
+                    SwitchState(Harvest);
+                    break;
+            }
+        }
+
+        private void CalculateTargetTile()
+        {
+            if (m_CurrentState is WorkerHarvestState)
+            {
+                m_TargetTile = worker.GetTargetTile(FarmTileState.Grown);
+            }
+            else if (m_CurrentState is WorkerPlantState)
+            {
+                m_TargetTile = worker.GetTargetTile(FarmTileState.Empty);
+            }
+            else
+            {
+                m_TargetTile = null;
+            }
+        }
+        
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private void IdleTest()
+        {
+            SwitchState(Idle);
+        }
+        
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private void RunTest()
+        {
+            SwitchState(Run);
+        }
+        
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private void PlantTest()
+        {
+            SwitchState(Plant);
+        }
+        
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        private void HarvestTest()
+        {
+            SwitchState(Harvest);
         }
     }
 }
