@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using Helpers;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class CinemachineController : Scenegleton<CinemachineController>
