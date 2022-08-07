@@ -40,7 +40,7 @@ public class PlayerRunState : PlayerBaseState
     {
         var stateSpeedEffect = 
             player.IsActiveState(player.plantState) || player.IsActiveState(player.harvestState)
-            ? 0.5f
+            ? 0.75f
             : 1f;
 
         player.GetComponent<Rigidbody>().velocity = new Vector3(

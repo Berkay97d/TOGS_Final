@@ -178,6 +178,8 @@ public class PlayerStackTransition : MonoBehaviour
                 }
             }
 
+            Debug.Log("MONEY!");
+
             shipCoroutine = MoveToShip(juices);
             StartCoroutine(shipCoroutine);
         }

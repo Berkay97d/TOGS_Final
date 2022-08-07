@@ -11,6 +11,8 @@ public class Ship : MonoBehaviour
     private DoLazyToggleMove _doLazyToggleMove;
     public Transform juicesStackPoint;
 
+    private bool sellAnimationIsStarted = false;
+    private int counter = 1;
     private void Start()
     {
         _doLazyRotate = GetComponent<DoLazyRotate>();
@@ -21,8 +23,15 @@ public class Ship : MonoBehaviour
 
     public void GoSellJuicesShipAnimation()
     {
-        _doLazyToggleMove.Enable();
-        CinemachineController.MoneyMaking();
+        if (!sellAnimationIsStarted)
+        {
+            _doLazyToggleMove.Enable();
+            CinemachineController.MoneyMaking();
+            counter++;
+            Debug.Log("COUNTER!: " + counter);
+            
+            sellAnimationIsStarted = true;
+        }
     }
     public void ComeSellJuicesShipAnimation()
     {
@@ -30,5 +39,6 @@ public class Ship : MonoBehaviour
             Destroy(juicesStackPoint.GetChild(i).gameObject);
         
         _doLazyToggleMove.Disable();
+        sellAnimationIsStarted = false;
     }
 }
