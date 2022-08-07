@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -797,6 +797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 188304210}
+  - component: {fileID: 188304211}
   m_Layer: 5
   m_Name: UpgradeFarm
   m_TagString: Untagged
@@ -826,6 +827,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &188304211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188304209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a034f394ed34d6a963f5f87c0b58cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &197221432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1403,6 +1416,10 @@ PrefabInstance:
       propertyPath: upgradableLazyToggleGroup
       value: 
       objectReference: {fileID: 1050290442}
+    - target: {fileID: 6483172659677659922, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.259998
+      objectReference: {fileID: 0}
     - target: {fileID: 9067764865150842342, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.199999
@@ -1531,7 +1548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1712,6 +1729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401125540}
   - component: {fileID: 401125541}
+  - component: {fileID: 401125542}
   m_Layer: 5
   m_Name: Magnet Upgrade
   m_TagString: Untagged
@@ -1755,6 +1773,38 @@ MonoBehaviour:
   main: {fileID: 1704099049}
   levelField: {fileID: 213577659}
   costField: {fileID: 1250786644}
+--- !u!114 &401125542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401125539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1abbfee5b8441fb8883ae1e16ccd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  component: {fileID: 0}
+  from: {x: 0.6, y: 0.6, z: 0.6}
+  to: {x: 1, y: 1, z: 1}
+  useFrom: 1
+  duration: 0.25
+  speedBased: 0
+  ease: 27
+  easeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useAnimationCurve: 0
+  loops: -1
+  loopType: 0
+  looping: 0
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &421823818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +2849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3119,6 +3169,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 401125542}
+        m_TargetAssemblyTypeName: LazyDoTween.Core.DoLazyScale, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &706951576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3275,6 +3337,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1371595475}
+        m_TargetAssemblyTypeName: LazyDoTween.Core.DoLazyScale, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &706951577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3395,6 +3469,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerStateManager, Assembly-CSharp
         m_MethodName: OnSpeedMultiplierUpgrade
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1425116494}
+        m_TargetAssemblyTypeName: LazyDoTween.Core.DoLazyScale, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4110,6 +4196,10 @@ PrefabInstance:
       propertyPath: upgradableLazyToggleGroup
       value: 
       objectReference: {fileID: 1050290442}
+    - target: {fileID: 6483172659677659922, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.259998
+      objectReference: {fileID: 0}
     - target: {fileID: 9067764865150842342, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.199999
@@ -4420,7 +4510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5120,7 +5210,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1658329071}
   - {fileID: 1476944529}
@@ -5745,7 +5835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5836,7 +5926,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 550731127}
   m_Father: {fileID: 188304210}
@@ -6104,7 +6194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6477,7 +6567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26666668, g: 0.7686275, b: 0.83921576, a: 1}
+  m_Color: {r: 0.4877625, g: 0.9150943, b: 0.6935601, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6712,6 +6802,10 @@ PrefabInstance:
     - target: {fileID: 5545956081603834683, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483172659677659922, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.26
       objectReference: {fileID: 0}
     - target: {fileID: 9067764865150842342, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7118,6 +7212,10 @@ PrefabInstance:
       propertyPath: upgradableLazyToggleGroup
       value: 
       objectReference: {fileID: 1050290442}
+    - target: {fileID: 6483172659677659922, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.259998
+      objectReference: {fileID: 0}
     - target: {fileID: 9067764865150842342, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.199999
@@ -7187,6 +7285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371595473}
   - component: {fileID: 1371595474}
+  - component: {fileID: 1371595475}
   m_Layer: 5
   m_Name: Capacity Upgrade
   m_TagString: Untagged
@@ -7230,6 +7329,38 @@ MonoBehaviour:
   main: {fileID: 1683699366}
   levelField: {fileID: 761671820}
   costField: {fileID: 945422095}
+--- !u!114 &1371595475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371595472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1abbfee5b8441fb8883ae1e16ccd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  component: {fileID: 0}
+  from: {x: 0.6, y: 0.6, z: 0.6}
+  to: {x: 1, y: 1, z: 1}
+  useFrom: 1
+  duration: 0.25
+  speedBased: 0
+  ease: 27
+  easeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useAnimationCurve: 0
+  loops: -1
+  loopType: 0
+  looping: 0
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1386010615
 GameObject:
   m_ObjectHideFlags: 0
@@ -7299,7 +7430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7409,10 +7540,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeSystem.Core.UpgradeBehaviour`2[[IdleCashSystem.Core.IdleCash,
-          Assembly-CSharp
-        m_MethodName: TryUpgrade
+      - m_Target: {fileID: 188304211}
+        m_TargetAssemblyTypeName: EMRE.Scripts.FarmLandUpgrader, Assembly-CSharp
+        m_MethodName: UpgradeGrowth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7537,6 +7667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425116492}
   - component: {fileID: 1425116493}
+  - component: {fileID: 1425116494}
   m_Layer: 5
   m_Name: Speed Upgrade
   m_TagString: Untagged
@@ -7580,6 +7711,38 @@ MonoBehaviour:
   main: {fileID: 932331121}
   levelField: {fileID: 1853339052}
   costField: {fileID: 2089783226}
+--- !u!114 &1425116494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425116491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1abbfee5b8441fb8883ae1e16ccd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  component: {fileID: 0}
+  from: {x: 0.6, y: 0.6, z: 0.6}
+  to: {x: 1, y: 1, z: 1}
+  useFrom: 1
+  duration: 0.25
+  speedBased: 0
+  ease: 27
+  easeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useAnimationCurve: 0
+  loops: -1
+  loopType: 0
+  looping: 0
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1476944528
 GameObject:
   m_ObjectHideFlags: 0
@@ -7589,6 +7752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1476944529}
+  - component: {fileID: 1476944530}
   m_Layer: 5
   m_Name: GrowthUpgrade
   m_TagString: Untagged
@@ -7617,6 +7781,20 @@ RectTransform:
   m_AnchoredPosition: {x: 245, y: -730}
   m_SizeDelta: {x: 491.4, y: 689.85}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1476944530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476944528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b93c9b373a3444a8387851420ede5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelField: {fileID: 1646217699}
+  costField: {fileID: 1600898547}
 --- !u!1 &1491867608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8384,9 +8562,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FarmLand, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 188304211}
+        m_TargetAssemblyTypeName: EMRE.Scripts.FarmLandUpgrader, Assembly-CSharp
+        m_MethodName: UpgradeSelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8409,7 +8587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.77778184, g: 0.20825914, b: 0.9433962, a: 1}
+  m_Color: {r: 0.77254903, g: 0.54447424, b: 0.1764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8501,8 +8679,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292961001
-  m_fontColor: {r: 0.9150943, g: 0.3833036, b: 0.88266456, a: 1}
+    rgba: 4288136688
+  m_fontColor: {r: 0.9411765, g: 0.7714116, b: 0.59215695, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8856,6 +9034,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1658329071}
+  - component: {fileID: 1658329072}
   m_Layer: 5
   m_Name: FruitUpgrade
   m_TagString: Untagged
@@ -8884,6 +9063,22 @@ RectTransform:
   m_AnchoredPosition: {x: -245, y: -730}
   m_SizeDelta: {x: 491.4, y: 689.85}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1658329072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658329070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc1b7d30417d458db8c2f65a017db1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelField: {fileID: 1055987680}
+  costField: {fileID: 803027082}
+  currentFruit: {fileID: 1122427210}
+  nextFruit: {fileID: 954902423}
 --- !u!1 &1668113881
 GameObject:
   m_ObjectHideFlags: 0
@@ -9475,9 +9670,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FarmLand, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 188304211}
+        m_TargetAssemblyTypeName: EMRE.Scripts.FarmLandUpgrader, Assembly-CSharp
+        m_MethodName: UnlockSelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9578,7 +9773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9150943, g: 0.21064433, b: 0.873349, a: 1}
+  m_Color: {r: 0.8392157, g: 0.534845, b: 0.2666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10582,7 +10777,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4620853, y: 1}
+    m_SensorSize: {x: 0.46220303, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11388,6 +11583,10 @@ PrefabInstance:
       propertyPath: upgradableLazyToggleGroup
       value: 
       objectReference: {fileID: 1050290442}
+    - target: {fileID: 6483172659677659922, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.259998
+      objectReference: {fileID: 0}
     - target: {fileID: 9067764865150842342, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.2
@@ -11505,7 +11704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 17.99aa
+  m_text: 2.00k
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd1ef80335925463885c3102faf7c5b6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 5166148dc5d204ddebfbd245db5d5601, type: 2}
@@ -11532,7 +11731,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.7
+  m_fontSize: 62.75
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14676,6 +14875,10 @@ PrefabInstance:
       propertyPath: upgradableLazyToggleGroup
       value: 
       objectReference: {fileID: 1050290442}
+    - target: {fileID: 6483172659677659922, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.259998
+      objectReference: {fileID: 0}
     - target: {fileID: 9067764865150842342, guid: 3ef4e1382049c8b4da7cbbf41193f5f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.199999

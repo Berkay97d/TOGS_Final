@@ -38,7 +38,7 @@ namespace EMRE.Scripts
         }
 
 
-        public void StartGrowing()
+        public void StartGrowing(float duration)
         {
             StartCoroutine(Growing());
             
@@ -49,7 +49,7 @@ namespace EMRE.Scripts
                 while (true)
                 {
                     var elapsedTime = Time.time - m_GrowStartTime;
-                    var growth = elapsedTime / item.growthDuration;
+                    var growth = elapsedTime / duration;
                     plant.localScale = Vector3.Lerp(Vector3.zero, m_PlantSize, growth / PlantGrowthRate);
                     fruit.localScale = Vector3.Lerp(Vector3.zero, m_FruitSize, (growth - PlantGrowthRate) / FruitGrowthRate);
                     if (growth >= 1f)

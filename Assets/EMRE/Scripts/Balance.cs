@@ -12,7 +12,7 @@ public static class Balance
 
     public static IdleCash Amount
     {
-        get => JsonPrefs.Load(BalanceKey, IdleCash.Zero);
+        get => JsonPrefs.Load(BalanceKey, IdleCash.One * 52000);
         private set => JsonPrefs.Save(BalanceKey, value);
     }
 

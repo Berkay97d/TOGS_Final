@@ -21,9 +21,10 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private Transform farmTileParent;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private HarvestableContainer harvestableContainer;
+    [SerializeField] private FarmLandUpgradeDataContainer upgradeDataContainer;
     [SerializeField] private FarmLandSign sign;
     [SerializeField] private GameObject locks;
-    public bool unlockOnStart;
+    [SerializeField] private bool unlockOnStart;
     
     [Header("Values")]
     [SerializeField] private int x;
@@ -32,7 +33,10 @@ public class FarmLand : MonoBehaviour
 
 
     private int m_Level = 1;
+    private int m_GrowthLevel = 1;
 
+
+    public bool IsLocked => State == FarmLandState.Locked;
 
     public FarmLandState State
     {
@@ -60,6 +64,11 @@ public class FarmLand : MonoBehaviour
     }
 
     public Harvestable CurrentHarvestable => harvestableContainer[m_Level - 1];
+    public Harvestable NextHarvestable => harvestableContainer[m_Level];
+    public FarmLandUpgradeData CurrentUpgradeData => upgradeDataContainer[m_Level - 1];
+    public FarmLandUpgradeData CurrentGrowthUpgradeData => upgradeDataContainer[m_GrowthLevel - 1];
+    public int FruitLevel => m_Level;
+    public int GrowthLevel => m_GrowthLevel;
     
     
     private List<FarmTile> m_FarmTiles;
@@ -71,7 +80,7 @@ public class FarmLand : MonoBehaviour
         Build();
         if (unlockOnStart)
         {
-            Unlock();
+            TryUnlock();
         }
     }
 
@@ -89,24 +98,48 @@ public class FarmLand : MonoBehaviour
             
             foreach (var farmTile in m_FarmTiles)
             {
-                farmTile.Harvestable.StartGrowing();
+                farmTile.Harvestable.StartGrowing(CurrentGrowthUpgradeData.growthDuration);
             }
         }
     }
 
     [Button(enabledMode: EButtonEnableMode.Playmode)]
-    public void Unlock()
+    public bool TryUnlock()
     {
-        locks.SetActive(false);
-        sign.Unlock(CurrentHarvestable.Data.icon);
+        if (Balance.TryRemove(CurrentUpgradeData.fruitUpgradeCost))
+        {
+            locks.SetActive(false);
+            sign.Unlock(CurrentHarvestable.Data.icon);
+            return true;
+        }
+
+        return false;
     }
 
     [Button(enabledMode: EButtonEnableMode.Playmode)]
-    public void Upgrade()
+    public bool TryUpgrade()
     {
-        m_Level++;
-        m_Level = Mathf.Min(m_Level, harvestableContainer.Count);
-        sign.Unlock(CurrentHarvestable.Data.icon);
+        if (Balance.TryRemove(CurrentUpgradeData.fruitUpgradeCost))
+        {
+            m_Level++;
+            m_Level = Mathf.Min(m_Level, harvestableContainer.Count);
+            sign.Unlock(CurrentHarvestable.Data.icon);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool TryUpgradeGrowth()
+    {
+        if (Balance.TryRemove(CurrentGrowthUpgradeData.growthReductionCost))
+        {
+            m_GrowthLevel++;
+            m_GrowthLevel = Mathf.Min(m_GrowthLevel, upgradeDataContainer.Count);
+            return true;
+        }
+
+        return false;
     }
     
 

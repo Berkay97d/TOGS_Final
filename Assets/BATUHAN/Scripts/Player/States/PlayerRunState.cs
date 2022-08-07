@@ -100,10 +100,18 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out FarmLandHub farmLandHub))
         {
-            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart) // temp
-                farmLandHub.EnableUpgradable();
-            else
+            FarmLandUpgrader.Select(farmLandHub);
+            FruitUpgrade.UpdateFields(farmLandHub.FarmLand);
+            GrowthSpeedDuration.UpdateFields(farmLandHub.FarmLand);
+            
+            if (farmLandHub.IsLocked)
+            {
                 farmLandHub.EnableUnlockable();
+            }
+            else
+            {
+                farmLandHub.EnableUpgradable();
+            }
         }
     }
 
@@ -131,10 +139,8 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out FarmLandHub farmLandHub))
         {
-            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart)  // temp
-                farmLandHub.DisableUpgradable();
-            else
-                farmLandHub.DisableUnlockable();
+            farmLandHub.DisableUnlockable();
+            farmLandHub.DisableUpgradable();
         }
     }
 }

@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class FarmLandHub : MonoBehaviour
 {
-    [SerializeField] private DoLazyToggleGroup upgradableLazyToggleGroup, unlockableLazyToggleGroup;
-    [SerializeField] private GameObject upgradableButtons, unlockableButton;
+    [SerializeField] private FarmLand farmLand;
+    [SerializeField] private DoLazyToggleGroup 
+        upgradableLazyToggleGroup, 
+        unlockableLazyToggleGroup;
 
+
+    public bool IsLocked => farmLand.IsLocked;
+    public FarmLand FarmLand => farmLand;
+    
 
     [Button()]
     public void EnableUpgradable()
@@ -34,9 +40,21 @@ public class FarmLandHub : MonoBehaviour
         unlockableLazyToggleGroup.Disable();
     }
 
-
     public void Unlock()
     {
-        
+        if (farmLand.TryUnlock())
+        {
+            DisableUnlockable();
+        }
+    }
+    
+    public void Upgrade()
+    {
+        farmLand.TryUpgrade();
+    }
+
+    public void UpgradeGrowth()
+    {
+        farmLand.TryUpgradeGrowth();
     }
 }

@@ -24,6 +24,7 @@ public class PlayerPlantState : PlayerBaseState
 
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
+        base.OnTriggerExit(player, collider);
         if (collider.TryGetComponent(out FarmLand _))
         {
             player.SwitchState(player.idleState);

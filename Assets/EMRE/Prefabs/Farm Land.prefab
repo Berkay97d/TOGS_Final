@@ -662,10 +662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17946d9203fa940b5a0afe0afb8000d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  farmLand: {fileID: 9146746121375457606}
   upgradableLazyToggleGroup: {fileID: 0}
   unlockableLazyToggleGroup: {fileID: 0}
-  upgradableButtons: {fileID: 0}
-  unlockableButton: {fileID: 0}
 --- !u!1 &9146746121316889215
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +763,7 @@ MonoBehaviour:
   farmTileParent: {fileID: 9146746121316889214}
   boxCollider: {fileID: 9146746121375457607}
   harvestableContainer: {fileID: 11400000, guid: 95869ff9d36d6094195b2f65fbd2c68d, type: 2}
+  upgradeDataContainer: {fileID: 11400000, guid: 65f97ed6914514b2095506bd27fb6570, type: 2}
   sign: {fileID: 3978134046564196250}
   locks: {fileID: 5545956081603834683}
   unlockOnStart: 0
