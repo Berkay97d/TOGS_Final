@@ -18,6 +18,8 @@ public class InGameAds : Scenegleton<InGameAds>
     public static void OnPassedBridge()
     {
         BridgePassCount += 1;
+        
+        if (BridgePassCount % BridgeAdRate != 0) return;
 
         DummyAdsManager
             .BuildRewardedDummyAd(DummyAdOrientation.Portrait)

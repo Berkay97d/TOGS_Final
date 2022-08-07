@@ -94,6 +94,11 @@ public class PlayerRunState : PlayerBaseState
     {
         base.OnTriggerEnter(player, collider);
 
+        if (collider.CompareTag("Bridge"))
+        {
+            InGameAds.OnPassedBridge();
+        }
+
         if (collider.TryGetComponent(out PlayerUpgradeAltar altar))
         {
             altar.Enable();
