@@ -1,18 +1,20 @@
 using Cinemachine;
 using Helpers;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class CinemachineController : Scenegleton<CinemachineController>
 {
     [SerializeField] private CinemachineBrain cinemachineBrain;
+
+    public static bool isTutorialCamActive;
     
     [Header("Tutorial Virtual Cameras")]
-    [SerializeField] private CinemachineVirtualCamera tutorialFarmCam;
-    [SerializeField] private CinemachineVirtualCamera tutorialJuicerCam;
-    [SerializeField] private CinemachineVirtualCamera tutorialSellerCam;
-    [SerializeField] private CinemachineVirtualCamera tutorialGainCam;
-    [SerializeField] private CinemachineVirtualCamera tutorialUpgradeCam;
+    [SerializeField] private CinemachineVirtualCamera farmCam;
+    [SerializeField] private CinemachineVirtualCamera juicerCam;
+    [SerializeField] private CinemachineVirtualCamera sellerCam;
+    [SerializeField] private CinemachineVirtualCamera gainCam;
+    [SerializeField] private CinemachineVirtualCamera upgradeCam;
+    [SerializeField] private float tutorialCamDuration = 3;
 
     [Header("Player Virtual Cameras:")]
     [SerializeField] private CinemachineVirtualCamera initialCam;
@@ -24,18 +26,13 @@ public class CinemachineController : Scenegleton<CinemachineController>
         ClearTutorialCams();
         ClearPlayerCams();
 
-        InitialPriority();
+        isTutorialCamActive = true;
+        StartTutorialCams();
     }
-
-    public static void Tutorial()
+    
+    public void InitialPriority()
     {
-        TutorialFarmPriority();
-        Instance.Invoke(nameof(TutorialJuicerPriority), 1f);
-
-    }
-
-    public static void InitialPriority()
-    {
+        isTutorialCamActive = false;
         ClearPlayerCams();
         Instance.initialCam.Priority = 1;
     }
@@ -63,37 +60,54 @@ public class CinemachineController : Scenegleton<CinemachineController>
     }
 
     
-    public static void TutorialFarmPriority()
+    
+
+    public void StartTutorialCams()
+    {
+        TutorialFarmPriority();
+        Instance.Invoke(nameof(TutorialJuicerPriority), tutorialCamDuration);
+    }
+    public void TutorialFarmPriority()
     {
         ClearTutorialCams();
-        Instance.tutorialFarmCam.Priority = 1;
+        Instance.farmCam.Priority = 1;
+        
+        Instance.Invoke(nameof(TutorialJuicerPriority), tutorialCamDuration);
     }
-    public static void TutorialJuicerPriority()
+    public void TutorialJuicerPriority()
     {
         ClearTutorialCams();
-        Instance.tutorialJuicerCam.Priority = 1;
+        Instance.juicerCam.Priority = 1;
+        
+        Instance.Invoke(nameof(TutorialSellerPriority), tutorialCamDuration);
     }
-    public static void TutorialSellerPriority()
+    public void TutorialSellerPriority()
     {
         ClearTutorialCams();
-        Instance.tutorialSellerCam.Priority = 1;
+        Instance.sellerCam.Priority = 1;
+        
+        Instance.Invoke(nameof(TutorialGainPriority), tutorialCamDuration);
     }
-    public static void TutorialGainPriority()
+    public void TutorialGainPriority()
     {
         ClearTutorialCams();
-        Instance.tutorialGainCam.Priority = 1;
+        Instance.gainCam.Priority = 1;
+        
+        Instance.Invoke(nameof(TutorialUpgradePriority), tutorialCamDuration);
     }
-    public static void TutorialUpgradePriority()
+    public void TutorialUpgradePriority()
     {
         ClearTutorialCams();
-        Instance.tutorialUpgradeCam.Priority = 1;
+        upgradeCam.Priority = 1;
+
+        Instance.Invoke(nameof(InitialPriority), tutorialCamDuration);
     }
-    private static void ClearTutorialCams()
+    private void ClearTutorialCams()
     {
-        Instance.tutorialFarmCam.Priority = 0;
-        Instance.tutorialJuicerCam.Priority = 0;
-        Instance.tutorialSellerCam.Priority = 0;
-        Instance.tutorialGainCam.Priority = 0;
-        Instance.tutorialUpgradeCam.Priority = 0;
+        farmCam.Priority = 0;
+        juicerCam.Priority = 0;
+        sellerCam.Priority = 0;
+        gainCam.Priority = 0;
+        upgradeCam.Priority = 0;
     }
 }
