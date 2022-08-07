@@ -5292,6 +5292,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821764855}
     m_Modifications:
+    - target: {fileID: 1107131652857069059, guid: c314deb1e8b7c824e95809d9ff4b00b0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 779d2538b3b3e3541b3de5a7755900e5, type: 2}
     - target: {fileID: 3511628403250298906, guid: c314deb1e8b7c824e95809d9ff4b00b0, type: 3}
       propertyPath: m_Name
       value: upgradeBuilding
@@ -9329,6 +9333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1821764855}
+  - component: {fileID: 1821764856}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -9367,6 +9372,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1821764856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821764854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605113cbcdc64c240baec5a76180912a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ubaMat: {fileID: 2100000, guid: 779d2538b3b3e3541b3de5a7755900e5, type: 2}
+  ubaInitColor: {r: 1, g: 1, b: 1, a: 1}
+  ubaTargetColor: {r: 0.627451, g: 0.98039216, b: 0.34901962, a: 1}
+  ubaAnimSpeed: 0.5
 --- !u!1 &1840354535
 GameObject:
   m_ObjectHideFlags: 0
@@ -12052,7 +12073,7 @@ MonoBehaviour:
   component: {fileID: 5504568588933580522}
   from: {x: 0, y: 0, z: 0}
   to: {x: 0, y: -3, z: 0}
-  useFrom: 0
+  useFrom: 1
   duration: 0.5
   speedBased: 0
   ease: 1
