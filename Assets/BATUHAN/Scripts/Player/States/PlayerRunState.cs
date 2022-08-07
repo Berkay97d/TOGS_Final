@@ -118,6 +118,11 @@ public class PlayerRunState : PlayerBaseState
                 farmLandHub.EnableUpgradable();
             }
         }
+        else if (collider.TryGetComponent(out MoneyCrate moneyCrate))
+        {
+            if(moneyCrate.moneysParent.childCount > 0)
+                moneyCrate.EnableMoneyMultiplierButton();
+        }
     }
 
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
@@ -146,6 +151,10 @@ public class PlayerRunState : PlayerBaseState
         {
             farmLandHub.DisableUnlockable();
             farmLandHub.DisableUpgradable();
+        }
+        else if (collider.TryGetComponent(out MoneyCrate moneyCrate))
+        {
+            moneyCrate.DisableMoneyMultiplierButton();
         }
     }
 }

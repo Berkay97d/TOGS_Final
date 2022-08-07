@@ -33,6 +33,7 @@ public class Ship : MonoBehaviour
             sellAnimationIsStarted = true;
         }
     }
+    
     public void ComeSellJuicesShipAnimation()
     {
         for (int i = 0; i < juicesStackPoint.childCount; i++)

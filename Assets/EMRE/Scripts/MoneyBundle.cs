@@ -14,7 +14,7 @@ namespace EMRE.Scripts
         protected override void Start()
         {
             base.Start();
-            player = GameObject.Find("Player").transform;
+            player = GameObject.FindWithTag("Player").transform;
         }
 
         public IdleCash Value { get; private set; }
@@ -39,7 +39,7 @@ namespace EMRE.Scripts
         public void MoveMoneyBundleToCashUI()
         {
             
-            Vector3 screenPoint = BalanceCounter.Position + new Vector3(0,0,10);
+            Vector3 screenPoint = BalanceCounter.Position + new Vector3(0,0,0);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPoint);
 
             StartCoroutine(MoneyBundleCoroutine(worldPos));
