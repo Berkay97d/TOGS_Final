@@ -39,7 +39,7 @@ namespace EMRE.Scripts
         public void MoveMoneyBundleToCashUI()
         {
             
-            Vector3 screenPoint = BalanceCounter.Position + new Vector3(0,0,0);
+            Vector3 screenPoint = BalanceCounter.Position + new Vector3(0,0,10f);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPoint);
 
             StartCoroutine(MoneyBundleCoroutine(worldPos));
