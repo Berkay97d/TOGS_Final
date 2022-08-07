@@ -16,6 +16,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   value:
     type: k
-    value: 156.25
+    value: 16
   growthDuration: 0
   collectableDelay: 1
