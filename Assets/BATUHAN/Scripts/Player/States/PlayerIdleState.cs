@@ -16,5 +16,9 @@ public class PlayerIdleState : PlayerBaseState
         {
             player.SwitchState(player.runState);
         }
+        else
+        {
+            player._playerMovement.rigidbody.velocity = Vector3.zero;
+        }
     }
 }
