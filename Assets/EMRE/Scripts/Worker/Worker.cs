@@ -1,10 +1,10 @@
-using DG.Tweening;
 using UnityEngine;
 
 namespace EMRE.Scripts.Worker
 {
     public class Worker : MonoBehaviour
     {
+        [SerializeField] private WorkerRandomer randomer;
         [SerializeField] private FarmLand farmLand;
         [SerializeField] private Rigidbody body;
         [SerializeField, Min(0f)] private float maxSpeed;
@@ -18,6 +18,7 @@ namespace EMRE.Scripts.Worker
 
         public void Enable()
         {
+            randomer.Randomize();
             gameObject.SetActive(true);
             IsActive = true;
         }

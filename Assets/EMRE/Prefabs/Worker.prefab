@@ -1479,6 +1479,7 @@ GameObject:
   - component: {fileID: 1305797463813132545}
   - component: {fileID: 1045179714359769903}
   - component: {fileID: 1305797463813132550}
+  - component: {fileID: 3420865647995985253}
   - component: {fileID: 5387509789544262513}
   - component: {fileID: 3757760456776328110}
   m_Layer: 0
@@ -1516,9 +1517,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a035b33b1b74d548f627fbc54ed6eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomer: {fileID: 3420865647995985253}
   farmLand: {fileID: 0}
   body: {fileID: 5387509789544262513}
-  maxSpeed: 6
+  maxSpeed: 3
 --- !u!114 &1305797463813132550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1533,6 +1535,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worker: {fileID: 1045179714359769903}
   animator: {fileID: 1305797462486894433}
+--- !u!114 &3420865647995985253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305797463813132544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30a34706a2cc4728811bb941d861890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyMaterials:
+  - {fileID: 2100000, guid: cdec3d6c3f2c6400e8017617cfc7dfa2, type: 2}
+  - {fileID: 2100000, guid: c4355a1ddb7394c1c83efff41dcef260, type: 2}
+  - {fileID: 2100000, guid: 7ef28c9464c9c1145b8dca65b8f1ed38, type: 2}
+  - {fileID: 2100000, guid: 90b6938e70f5e4ad8ae36cc2f8f55de0, type: 2}
+  - {fileID: 2100000, guid: ba5ab2598669e45da95456efdffe495d, type: 2}
+  - {fileID: 2100000, guid: 820b0f38106884de2bbb1f270d91dd66, type: 2}
+  - {fileID: 2100000, guid: 2aa1d58a695d94d449374ecb206cd93b, type: 2}
+  - {fileID: 2100000, guid: a134834c0e49e4662ae49739aea605ab, type: 2}
+  renderer: {fileID: 1305797462541591928}
 --- !u!54 &5387509789544262513
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/BATUHAN/Scenes/bat.unity
+    guid: accca59575cb32445b147acdab23ad00
   m_configObjects: {}
