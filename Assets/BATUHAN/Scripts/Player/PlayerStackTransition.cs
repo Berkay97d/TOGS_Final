@@ -106,7 +106,7 @@ public class PlayerStackTransition : MonoBehaviour
 
     public void JuicerTankMoving()
     {
-        if (!Inventory.IsEmpty() && !isJuicerCoroutineStarted)
+        if (!isJuicerCoroutineStarted)
         {
             var fruits = new List<Fruit>();
             for (int i = 0; i < playerBag.childCount; i++)

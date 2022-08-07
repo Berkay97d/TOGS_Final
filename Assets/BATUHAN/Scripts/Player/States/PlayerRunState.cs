@@ -73,8 +73,11 @@ public class PlayerRunState : PlayerBaseState
         }
         else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
         {
-            player._playerStackTransition.JuicerTankMoving();
-            juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Play();
+            if (!Inventory.IsEmpty() && Inventory.HasItemType<Fruit>())
+            {
+                player._playerStackTransition.JuicerTankMoving();
+                juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Play();
+            }
         }
         else if (collider.TryGetComponent(out JuiceSellPoint juiceSellPoint))
         {
@@ -94,6 +97,13 @@ public class PlayerRunState : PlayerBaseState
         if (collider.TryGetComponent(out PlayerUpgradeAltar altar))
         {
             altar.Enable();
+        }
+        else if (collider.TryGetComponent(out FarmLandHub farmLandHub))
+        {
+            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart)
+                farmLandHub.EnableUpgradable();
+            else
+                farmLandHub.EnableUnlockable();
         }
     }
 
@@ -118,6 +128,13 @@ public class PlayerRunState : PlayerBaseState
         if (collider.TryGetComponent(out PlayerUpgradeAltar altar))
         {
             altar.Disable();
+        }
+        else if (collider.TryGetComponent(out FarmLandHub farmLandHub))
+        {
+            if(farmLandHub.transform.parent.GetComponent<FarmLand>().unlockOnStart)
+                farmLandHub.DisableUpgradable();
+            else
+                farmLandHub.DisableUnlockable();
         }
     }
 }

@@ -1,18 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+using LazyDoTween.Core;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class FarmLandHub : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private DoLazyToggleGroup upgradableLazyToggleGroup, unlockableLazyToggleGroup;
+    [SerializeField] private GameObject upgradableButtons, unlockableButton;
+
+
+    [Button()]
+    public void EnableUpgradable()
     {
-        
+        //upgradableButtons.SetActive(true);
+        upgradableLazyToggleGroup.Enable();
+    }
+    [Button()]
+    public void DisableUpgradable()
+    {
+        upgradableLazyToggleGroup.Disable();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    [Button()]
+    public void EnableUnlockable()
     {
-        
+        //unlockableButton.SetActive(true);
+        unlockableLazyToggleGroup.Enable();
+    }
+    [Button()]
+    public void DisableUnlockable()
+    {
+        //unlockableButton.SetActive(false);
+        unlockableLazyToggleGroup.Disable();
     }
 }

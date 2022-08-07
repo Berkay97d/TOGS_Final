@@ -662,6 +662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17946d9203fa940b5a0afe0afb8000d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradableLazyToggleGroup: {fileID: 0}
+  unlockableLazyToggleGroup: {fileID: 0}
+  upgradableButtons: {fileID: 0}
+  unlockableButton: {fileID: 0}
 --- !u!1 &9146746121316889215
 GameObject:
   m_ObjectHideFlags: 0

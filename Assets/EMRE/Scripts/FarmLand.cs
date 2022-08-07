@@ -23,7 +23,7 @@ public class FarmLand : MonoBehaviour
     [SerializeField] private HarvestableContainer harvestableContainer;
     [SerializeField] private FarmLandSign sign;
     [SerializeField] private GameObject locks;
-    [SerializeField] private bool unlockOnStart;
+    public bool unlockOnStart;
     
     [Header("Values")]
     [SerializeField] private int x;
