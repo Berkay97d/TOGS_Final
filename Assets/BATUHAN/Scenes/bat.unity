@@ -11361,6 +11361,7 @@ MonoBehaviour:
   sellerCam: {fileID: 866997344}
   gainCam: {fileID: 629648629}
   upgradeCam: {fileID: 404302965}
+  tutorialCamDuration: 3
   initialCam: {fileID: 1931569383}
   standartCam: {fileID: 21970392}
   juicesSellingCam: {fileID: 137301580}
