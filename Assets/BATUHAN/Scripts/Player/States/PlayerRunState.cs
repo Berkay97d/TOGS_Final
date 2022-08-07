@@ -125,7 +125,7 @@ public class PlayerRunState : PlayerBaseState
         if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
         {
             player._playerStackTransition.StopJuicerTankMoving();
-            juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Kill();  
+            //juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Kill();  
             
             player._playerStackTransition.SortBagItems();
         }

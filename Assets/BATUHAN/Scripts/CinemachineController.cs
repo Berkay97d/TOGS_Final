@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CinemachineController : Scenegleton<CinemachineController>
 {
+    private const string TutorialKey = "Tutorial";
+    
+    
     [SerializeField] private CinemachineBrain cinemachineBrain;
 
     public static bool isTutorialCamActive;
@@ -21,17 +24,33 @@ public class CinemachineController : Scenegleton<CinemachineController>
     [SerializeField] private CinemachineVirtualCamera standartCam;
     [SerializeField] private CinemachineVirtualCamera juicesSellingCam;
     [SerializeField] private CinemachineVirtualCamera moneyMakingCam;
+
+
+    private static bool IsTutorialComplete
+    {
+        get => PlayerPrefs.GetInt(TutorialKey, 0) == 1;
+        set => PlayerPrefs.SetInt(TutorialKey, value ? 1 : 0);
+    }
+    
+    
     private void Start()
     {
         ClearTutorialCams();
         ClearPlayerCams();
 
-        isTutorialCamActive = true;
-        StartTutorialCams();
+        if (IsTutorialComplete)
+        {
+            InitialPriority();
+        }
+        else
+        {
+            StartTutorialCams();
+        }
     }
     
     public void InitialPriority()
     {
+        IsTutorialComplete = true;
         isTutorialCamActive = false;
         ClearPlayerCams();
         Instance.initialCam.Priority = 1;
@@ -64,6 +83,8 @@ public class CinemachineController : Scenegleton<CinemachineController>
 
     public void StartTutorialCams()
     {
+        isTutorialCamActive = true;
+        
         TutorialFarmPriority();
         Instance.Invoke(nameof(TutorialJuicerPriority), tutorialCamDuration);
     }
