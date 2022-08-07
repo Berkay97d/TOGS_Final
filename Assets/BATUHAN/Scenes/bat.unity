@@ -7864,6 +7864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capacityField: {fileID: 270165344}
+  emptyColor: {r: 0.41612244, g: 1, b: 0.1745283, a: 1}
+  fullColor: {r: 1, g: 0.08962262, b: 0.08962262, a: 1}
 --- !u!1 &2089783224
 GameObject:
   m_ObjectHideFlags: 0
