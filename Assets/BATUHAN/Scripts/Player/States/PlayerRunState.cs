@@ -1,6 +1,10 @@
+using System.Numerics;
 using EMRE.Scripts;
 using LazyDoTween.Core;
+using Unity.VisualScripting;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerRunState : PlayerBaseState
 {
@@ -16,42 +20,54 @@ public class PlayerRunState : PlayerBaseState
     {
         base.UpdateState(player);
         
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && player._playerMovement.IsEnoughJoystickInputForMovement())
         {
-            Movement(player);
-            if (Input.GetTouch(0).phase is TouchPhase.Began or TouchPhase.Moved)
+            HandleMovement(player);
+            HandleMovementAnimatorSpeed(player);
+            HandleRotation(player);
+            /*if (Input.GetTouch(0).phase is TouchPhase.Began or TouchPhase.Moved)
             {
-                Rotation(player);
-            }
+                HandleRotation(player);
+            }*/
         }
         else
         {
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player._playerMovement.rigidbody.velocity = Vector3.zero;
             if (player.IsActiveState(this))
             {
+                player._playerAnimator.SetOriginalAnimatorSpeed();
                 player.SwitchState(player.idleState);
             }
             
         }
 
     }
-    
-    private void Movement(PlayerStateManager player)
-    {
-        var stateSpeedEffect = 
-            player.IsActiveState(player.plantState) || player.IsActiveState(player.harvestState)
-            ? 0.75f
-            : 1f;
 
-        player.GetComponent<Rigidbody>().velocity = new Vector3(
-            player._playerMovement._floatingJoystick.Horizontal * player._playerMovement.horizontalMovementSpeed * stateSpeedEffect * player.SpeedMultiplier, 
-            0, 
-            player._playerMovement._floatingJoystick.Vertical * player._playerMovement.verticalMovementSpeed * stateSpeedEffect * player.SpeedMultiplier);
+    private void HandleMovement(PlayerStateManager player)
+    {
+        player._playerMovement.rigidbody.velocity =
+            new Vector3(
+                player._playerMovement.HorizontalMovement,
+                0,
+                player._playerMovement.VerticalMovement);
+    }
+    
+    
+    private void HandleMovementAnimatorSpeed(PlayerStateManager player)
+    {
+        var magnitudeOfJoystickInput = player._playerMovement.MagnitudeOfJoystickInput();
+        
+        //Debug.Log(magnitudeOfJoystickInput);
+        
+        player._playerAnimator.AnimatorSpeed =
+            magnitudeOfJoystickInput < 0.5f
+                ? magnitudeOfJoystickInput * 1.5f
+                : magnitudeOfJoystickInput;
     }
 
-    private void Rotation(PlayerStateManager player)
+    private void HandleRotation(PlayerStateManager player)
     {
-        var angle = Mathf.Atan2(player._playerMovement._floatingJoystick.Horizontal, player._playerMovement._floatingJoystick.Vertical) * Mathf.Rad2Deg; 
+        var angle = Mathf.Atan2(player._playerMovement.HorizontalJoystickInput, player._playerMovement.VerticalJoystickInput) * Mathf.Rad2Deg; 
         player.transform.rotation = Quaternion.Euler(new Vector3(0, angle+180, 0));
     }
 

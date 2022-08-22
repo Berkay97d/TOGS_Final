@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -8,6 +9,23 @@ public class PlayerAnimator : MonoBehaviour
     [AnimatorParam("animator0")]
     
     public int running, harvesting, planting;
+    
+    
+    private float _originalAnimatorSpeed;
+    public float AnimatorSpeed
+    {
+        get { return animator0.speed; }
+        set { animator0.speed = value; }
+    }
+    public void SetOriginalAnimatorSpeed()
+    {
+        AnimatorSpeed = _originalAnimatorSpeed;
+    }
+
+    private void Start()
+    {
+        _originalAnimatorSpeed = AnimatorSpeed;
+    }
 
     public void IdleAnimation()
     {

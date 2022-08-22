@@ -120,6 +120,11 @@ public class PlayerStateManager : MonoBehaviour
     {
         return currentState == state;
     }
+
+    public float StateMovementSpeedEffect()
+    {
+        return IsActiveState(plantState) || IsActiveState(harvestState) ? 0.75f : 1f;
+    }
     
     private void CheckMagnet(PlayerStateManager player)
     {

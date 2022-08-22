@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void UpdateState(PlayerStateManager player)
     {
-        if (Input.touchCount > 0 && !CinemachineController.isTutorialCamActive)
+        if (Input.touchCount > 0 && player._playerMovement.IsEnoughJoystickInputForMovement() && !CinemachineController.isTutorialCamActive)
             player.SwitchState(player.runState);
         else
             player._playerMovement.rigidbody.velocity = Vector3.zero;
