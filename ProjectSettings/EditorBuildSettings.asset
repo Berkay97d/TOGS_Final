@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Loading Scene.unity
+    path: Assets/Scenes/Loading Scene.unity
     guid: d06c6a41e4876443dae63c67b0f4669a
   - enabled: 1
-    path: Assets/BATUHAN/Scenes/bat.unity
+    path: Assets/Scenes/bat.unity
     guid: accca59575cb32445b147acdab23ad00
   m_configObjects: {}
