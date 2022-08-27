@@ -12,8 +12,9 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public PlayerMovement _playerMovement;
     [HideInInspector] public PlayerStackTransition _playerStackTransition;
     
-    PlayerBaseState currentState;
-    
+    [HideInInspector] public PlayerBaseState currentState;
+    public string currStateName;
+
     public PlayerIdleState idleState = new PlayerIdleState();
     
     public PlayerRunState runState = new PlayerRunState();
@@ -88,6 +89,7 @@ public class PlayerStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
+        currStateName = currentState.ToString();
     }
 
     private void OnCollisionEnter(Collision collision)

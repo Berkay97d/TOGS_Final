@@ -52,7 +52,6 @@ public class PlayerRunState : PlayerBaseState
                 player._playerMovement.VerticalMovement);
     }
     
-    
     private void HandleMovementAnimatorSpeed(PlayerStateManager player)
     {
         var magnitudeOfJoystickInput = player._playerMovement.MagnitudeOfJoystickInput();
@@ -76,7 +75,7 @@ public class PlayerRunState : PlayerBaseState
     {
         if (collider.TryGetComponent(out FarmLand farmLand))
         {
-            switch (farmLand.State)
+            /*switch (farmLand.State)
             {
                 case FarmLandState.Harvestable:
                     player.SwitchState(player.harvestState);
@@ -85,7 +84,7 @@ public class PlayerRunState : PlayerBaseState
                 case FarmLandState.Seeding:
                     player.SwitchState(player.plantState);
                     break;
-            }
+            }*/
         }
         else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
         {
@@ -109,6 +108,23 @@ public class PlayerRunState : PlayerBaseState
     public override void OnTriggerEnter(PlayerStateManager player, Collider collider)
     {
         base.OnTriggerEnter(player, collider);
+        
+        
+        if (collider.TryGetComponent(out FarmLand farmLand))
+        {
+            switch (farmLand.State)
+            {
+                case FarmLandState.Harvestable:
+                    player._playerController.ActivateHarvestStateButton();
+                    break;
+                
+                case FarmLandState.Seeding:
+                    player._playerController.ActivatePlantStateButton();
+                    break;
+            }
+            player._playerController.EnableStateSelectionButton();
+        }
+        
 
         if (collider.CompareTag("Bridge"))
         {
@@ -148,7 +164,11 @@ public class PlayerRunState : PlayerBaseState
 
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
-        if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
+        if (collider.TryGetComponent(out FarmLand farmLand))
+        {
+            player._playerController.DisableStateSelectionButton();
+        }
+        else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
         {
             player._playerStackTransition.StopJuicerTankMoving();
             //juiceCreationPoint.transform.parent.GetComponent<DoLazyMove>().Kill();  
