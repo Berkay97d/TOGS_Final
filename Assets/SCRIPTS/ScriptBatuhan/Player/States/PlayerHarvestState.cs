@@ -15,6 +15,10 @@ public class PlayerHarvestState : PlayerBaseState
         base.UpdateState(player);
         // HandlePlayerInteractionArea(player);
     }
+    
+    /*
+     * Sphere interaction area for checking avaible harvestable object around
+     */
     private void HandlePlayerInteractionArea(PlayerStateManager player)
     {
         var origin = player.transform.position;
@@ -42,6 +46,20 @@ public class PlayerHarvestState : PlayerBaseState
         }
     }
 
+    public override void OnTriggerStay(PlayerStateManager player, Collider collider)
+    {
+        base.OnTriggerStay(player, collider);
+        if (collider.TryGetComponent(out FarmLand farmLand))
+        {
+            switch (farmLand.State)
+            {
+                case FarmLandState.Seeding:
+                    player._playerController.ActivatePlantStateButton();
+                    player.SwitchState(player.idleState);
+                    break;
+            }
+        }
+    }
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
         base.OnTriggerExit(player, collider);

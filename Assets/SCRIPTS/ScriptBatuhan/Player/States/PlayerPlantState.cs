@@ -16,6 +16,7 @@ public class PlayerPlantState : PlayerBaseState
             switch (farmLand.State)
             {
                 case FarmLandState.Growing:
+                    player.StartCoroutine(player.ActivateHarvestStateSelectionButtonWithDelay(farmLand.CurrentGrowthUpgradeData.growthDuration));
                     player.SwitchState(player.idleState);
                     break;
             }

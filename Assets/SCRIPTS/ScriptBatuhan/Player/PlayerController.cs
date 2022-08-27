@@ -25,31 +25,35 @@ public class PlayerController : MonoBehaviour
     {
         plantStateButton.SetActive(true);
         harvestStateButton.SetActive(false);
+
+        EnableStateSelectionButtons();
     }
 
     public void ActivateHarvestStateButton()
     {
         harvestStateButton.SetActive(true);
         plantStateButton.SetActive(false);
+
+        EnableStateSelectionButtons();
     }
     
     [Button()]
-    public void EnableStateSelectionButton()
+    public void EnableStateSelectionButtons()
     {
         stateSelectionLazyToggleGroup.Enable();
     }
     [Button()]
-    public void DisableStateSelectionButton()
+    public void DisableStateSelectionButtons()
     {
         stateSelectionLazyToggleGroup.Disable();
     }
     
     public void SelectHarvestState() {
         playerStateManager.SwitchState(playerStateManager.harvestState);
-        DisableStateSelectionButton();
+        DisableStateSelectionButtons();
     }
     public void SelectPlantState() {
         playerStateManager.SwitchState(playerStateManager.plantState);
-        DisableStateSelectionButton();
+        DisableStateSelectionButtons();
     }
 }

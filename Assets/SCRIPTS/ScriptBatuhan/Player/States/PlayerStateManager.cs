@@ -1,3 +1,4 @@
+using System.Collections;
 using EMRE.Scripts;
 using IdleCashSystem.Core;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UpgradeSystem.Core;
 public class PlayerStateManager : MonoBehaviour
 {
     public CinemachineController _cinemachineController;
+
+    public FarmLand farmLand;
     
     [HideInInspector] public PlayerController _playerController;
     [HideInInspector] public PlayerAnimator _playerAnimator;
@@ -156,4 +159,11 @@ public class PlayerStateManager : MonoBehaviour
             }
         }
     }
+
+    public IEnumerator ActivateHarvestStateSelectionButtonWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _playerController.ActivateHarvestStateButton();
+    }
+    
 }

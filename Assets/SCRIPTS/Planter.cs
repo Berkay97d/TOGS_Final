@@ -9,7 +9,9 @@ namespace EMRE.Scripts
 
         private void OnTriggerStay(Collider other)
         {
-            if (playerStateManager.currentState == playerStateManager.plantState && other.TryGetComponent(out FarmTile farmTile))
+            if (playerStateManager.currentState != playerStateManager.plantState) return;
+            
+            if (other.TryGetComponent(out FarmTile farmTile))
             {
                 if (farmTile.TryPlantSeed())
                 {

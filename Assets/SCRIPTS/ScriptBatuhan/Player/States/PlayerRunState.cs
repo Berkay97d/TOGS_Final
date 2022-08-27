@@ -109,6 +109,10 @@ public class PlayerRunState : PlayerBaseState
     {
         base.OnTriggerEnter(player, collider);
         
+        if (collider.CompareTag("Bridge"))
+        {
+            InGameAds.OnPassedBridge();
+        }
         
         if (collider.TryGetComponent(out FarmLand farmLand))
         {
@@ -122,16 +126,8 @@ public class PlayerRunState : PlayerBaseState
                     player._playerController.ActivatePlantStateButton();
                     break;
             }
-            player._playerController.EnableStateSelectionButton();
         }
-        
-
-        if (collider.CompareTag("Bridge"))
-        {
-            InGameAds.OnPassedBridge();
-        }
-
-        if (collider.TryGetComponent(out PlayerUpgradeAltar altar))
+        else if (collider.TryGetComponent(out PlayerUpgradeAltar altar))
         {
             altar.Enable();
         }
@@ -166,7 +162,7 @@ public class PlayerRunState : PlayerBaseState
     {
         if (collider.TryGetComponent(out FarmLand farmLand))
         {
-            player._playerController.DisableStateSelectionButton();
+            player._playerController.DisableStateSelectionButtons();
         }
         else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
         {
