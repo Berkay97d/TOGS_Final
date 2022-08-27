@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juice: {fileID: 1071315329}
-  juiceCount: 250
+  juiceCount: 100
   player: {fileID: 1538430842}
   bagItemOffsetYAmount: 0.6
   juicesStackPoint: {fileID: 2822100410872802458}

@@ -27,16 +27,13 @@ public class PlayerStackTransition : MonoBehaviour
     [Range(1,10)][SerializeField] private float itemToShipSpeed;
     [Range(0.1f,3f)][SerializeField] private float itemToShipDelay;
 
-    [SerializeField] private int bottlesPerLine;
+    [SerializeField] private int bottlesPerHorizontalLine, bottlesPerVerticalLine;
+    private Vector3 bottleOffset;
 
     private IEnumerator juicerCoroutine, shipCoroutine;
-    private bool isJuicerCoroutineStarted = false, isShipCoroutineStarted = false;
-
-    private float bottleOffsetZ, bottleOffsetX;
-
-
-    public IdleCash BagSize { get; private set; }
+    private bool isJuicerCoroutineStarted, isShipCoroutineStarted;
     
+    public IdleCash BagSize { get; private set; }
     
     private void Start()
     {
@@ -46,13 +43,14 @@ public class PlayerStackTransition : MonoBehaviour
 
         isJuicerCoroutineStarted = false;
         isShipCoroutineStarted = false;
-        bottleOffsetZ = 0f;
-        bottleOffsetX = 0f;
+        bottleOffset = Vector3.zero;
 
 
         juicerCoroutine = MoveToJuicerTank(null);
         shipCoroutine = MoveToShip(null);
 
+
+        BagSize = IdleCash.One * 100;
     }
 
 
@@ -199,50 +197,45 @@ public class PlayerStackTransition : MonoBehaviour
     {
         isShipCoroutineStarted = true;
         var itemsLength = juices.Count;
+        int bottleCounter = 0;
         while (itemsLength > 0)
         {
-            if (itemsLength >= bottlesPerLine)
+            var juice = juices[--itemsLength];
+            if (!juice) continue;
+            
+            if (bottleCounter != 0 && bottleCounter % (bottlesPerHorizontalLine*bottlesPerVerticalLine) == 0)
             {
-                if (itemsLength % bottlesPerLine*bottlesPerLine == 0)
-                {
-                    bottleOffsetZ = 0f;
-                    bottleOffsetX = 0f;
-                }
-                else if (itemsLength % bottlesPerLine == 0) 
-                {
-                     bottleOffsetX += 0.5f;
-                     bottleOffsetZ = 0f; 
-                }
+                bottleOffset = new Vector3(0, bottleOffset.y + 0.6f, 0);
+            }
+            else if (bottleCounter != 0 && bottleCounter % bottlesPerHorizontalLine == 0)
+            {
+                bottleOffset = new Vector3(bottleOffset.x + 0.6f, bottleOffset.y, 0);
             }
 
-            var juice = juices[--itemsLength];
-            
-            if (!juice) continue;
             
             juice.transform.SetParent(_ship.juicesStackPoint);
             CapacityDisplay.OnItemCountChanged(IdleCash.One * playerBag.childCount);
             
-            var itemJuicesStackPointPosition = new Vector3(bottleOffsetX, 0, bottleOffsetZ);
+            var itemJuicesStackPointPosition = bottleOffset;
             juice.transform.DOLocalRotate(Vector3.zero, 3f / itemToShipSpeed);
             juice.transform.DOLocalMove(itemJuicesStackPointPosition, 3f / itemToShipSpeed).SetEase(Ease.OutCubic)
                 .OnComplete(() =>
                 {
-
                     if (Inventory.TryRemoveItem(juice))
                     {
+                        Instantiate(juice, _ship.juicesStackPoint);
                         _ship.GetComponent<JuicesToMoney>().MoneyMaker(juice);
                     }
-
                 });
+            bottleCounter++;
             bagItemOffsetY -= bagItemOffsetYAmount;
-            bottleOffsetZ += 0.5f;
+            bottleOffset = new Vector3(bottleOffset.x, bottleOffset.y, bottleOffset.z + 0.6f);
             
             yield return new WaitForSeconds(itemToShipDelay);
         }
 
         _ship.GoSellJuicesShipAnimation();
-        bottleOffsetZ = 0f;
-        bottleOffsetX = 0f;
+        bottleOffset = new Vector3(0, bottleOffset.y, 0);
 
         SortBagItems();
         isShipCoroutineStarted = false;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class FruitJuiceSell_TEST : MonoBehaviour
@@ -53,10 +54,14 @@ public class FruitJuiceSell_TEST : MonoBehaviour
         }
     }
     
+    [Button()]
     public void JuicesMovingToShip()
     {
-        shipCoroutine = MoveToShip(juices);
-        StartCoroutine(shipCoroutine);
+        if (!isShipCoroutineStarted)
+        {
+            shipCoroutine = MoveToShip(juices);
+            StartCoroutine(shipCoroutine);
+        }
     }
 
     public void StopJuicesMovingToShip()

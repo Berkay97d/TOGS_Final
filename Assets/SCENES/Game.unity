@@ -4730,7 +4730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763182927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: -1.117, z: -0.905}
+  m_LocalPosition: {x: 2.5, y: -1.117, z: -1.155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15393,6 +15393,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3838141689310320476, guid: eb50dfec56e664ad39635d37844233c0, type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4756881052808721457, guid: eb50dfec56e664ad39635d37844233c0, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -15473,6 +15477,14 @@ PrefabInstance:
       propertyPath: juicerTank
       value: 
       objectReference: {fileID: 980957214}
+    - target: {fileID: 5296348770706057726, guid: eb50dfec56e664ad39635d37844233c0, type: 3}
+      propertyPath: bottlesPerVerticalLine
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296348770706057726, guid: eb50dfec56e664ad39635d37844233c0, type: 3}
+      propertyPath: bottlesPerHorizontalLine
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5296348770706057726, guid: eb50dfec56e664ad39635d37844233c0, type: 3}
       propertyPath: juicerInPoints.Array.data[0]
       value: 
