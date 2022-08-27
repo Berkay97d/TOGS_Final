@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerPlantState : PlayerBaseState
@@ -16,7 +17,9 @@ public class PlayerPlantState : PlayerBaseState
             switch (farmLand.State)
             {
                 case FarmLandState.Growing:
-                    player.StartCoroutine(player.ActivateHarvestStateSelectionButtonWithDelay(farmLand.CurrentGrowthUpgradeData.growthDuration));
+                    player.harvestStateActivationCoroutine = player.ActivateHarvestStateSelectionButtonWithDelay(farmLand.CurrentGrowthUpgradeData.growthDuration);
+                    player.StartCoroutine(player.harvestStateActivationCoroutine);
+                    
                     player.SwitchState(player.idleState);
                     break;
             }
@@ -26,8 +29,15 @@ public class PlayerPlantState : PlayerBaseState
     public override void OnTriggerExit(PlayerStateManager player, Collider collider)
     {
         base.OnTriggerExit(player, collider);
-        if (collider.TryGetComponent(out FarmLand _))
+        if (collider.TryGetComponent(out FarmLand farmLand))
         {
+            switch (farmLand.State)
+            {
+                case FarmLandState.Growing:
+                    player.StopCoroutine(player.harvestStateActivationCoroutine);
+                    break;
+            }
+            
             player.SwitchState(player.idleState);
         }
     }

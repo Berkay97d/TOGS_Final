@@ -17,7 +17,8 @@ public class PlayerStackTransition : MonoBehaviour
 
     [Header("JUICER")] 
     [SerializeField] private Juicer _juicer;
-    [SerializeField]  private Transform juicerTank;
+    [SerializeField] private Transform juicerTank;
+    [SerializeField] private Transform[] juicerInPoints;
     [Range(1,10)][SerializeField] private float itemToJuicerSpeed;
     [Range(0.1f,3f)][SerializeField] private float itemToJuicerDelay;
 
@@ -131,28 +132,31 @@ public class PlayerStackTransition : MonoBehaviour
     IEnumerator MoveToJuicerTank(List<Fruit> fruits)
     {
         isJuicerCoroutineStarted = true;
+
         var itemsLength = fruits.Count;
         while (itemsLength > 0)
         {
             var fruit = fruits[--itemsLength];
-            
             if (!fruit) continue;
             
-            fruit.transform.SetParent(juicerTank, true);
             CapacityDisplay.OnItemCountChanged(IdleCash.One * playerBag.childCount);
+            
+            fruit.transform.SetParent(juicerTank, true);
+            
+            Sequence mySequence = DOTween.Sequence();
 
-            var itemJuicerTankPosition = new Vector3(0, 0, 0);
-            fruit.transform.DOLocalRotate(Vector3.zero, 3f / itemToJuicerSpeed);
-            fruit.transform.DOLocalMove(itemJuicerTankPosition, 3f / itemToJuicerSpeed).SetEase(Ease.OutCubic)
-                .OnComplete(() =>
-                {
-
-                    if (Inventory.TryRemoveItem(fruit))
-                    {
-                        _juicer.GetComponent<Juicer>().JuiceFruit(fruit);
-                    }
-
-                });
+            for (int i = 0; i < juicerInPoints.Length; i++)
+            {
+                mySequence.Append(i == 0
+                    ? fruit.transform.DOMove(juicerInPoints[i].position, 3f / itemToJuicerSpeed).SetEase(Ease.InSine)
+                    : fruit.transform.DOMove(juicerInPoints[i].position, 1f / itemToJuicerSpeed).SetEase(Ease.OutCubic));
+            }
+                
+            mySequence.Join(fruit.transform.DOLocalRotate(Vector3.zero, 3f / itemToJuicerSpeed));
+            mySequence.OnComplete(() => {
+                if (Inventory.TryRemoveItem(fruit)) _juicer.GetComponent<Juicer>().JuiceFruit(fruit);
+            });
+            
             bagItemOffsetY -= bagItemOffsetYAmount;
             
             yield return new WaitForSeconds(itemToJuicerDelay);
@@ -191,7 +195,7 @@ public class PlayerStackTransition : MonoBehaviour
         isShipCoroutineStarted = false;
     }
 
-    IEnumerator MoveToShip(List<Juice> juices)
+    private IEnumerator MoveToShip(List<Juice> juices)
     {
         isShipCoroutineStarted = true;
         var itemsLength = juices.Count;

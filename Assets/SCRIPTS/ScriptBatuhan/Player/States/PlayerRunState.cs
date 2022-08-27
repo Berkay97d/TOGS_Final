@@ -73,20 +73,25 @@ public class PlayerRunState : PlayerBaseState
 
     public override void OnTriggerStay(PlayerStateManager player, Collider collider)
     {
-        if (collider.TryGetComponent(out FarmLand farmLand))
-        {
-            /*switch (farmLand.State)
+        /* AUTO PLAYER STATE CHANGING BY FARM STATUS
+    
+            if (collider.TryGetComponent(out FarmLand farmLand))
             {
-                case FarmLandState.Harvestable:
-                    player.SwitchState(player.harvestState);
-                    break;
-                
-                case FarmLandState.Seeding:
-                    player.SwitchState(player.plantState);
-                    break;
-            }*/
-        }
-        else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
+                switch (farmLand.State)
+                {
+                    case FarmLandState.Harvestable:
+                        player.SwitchState(player.harvestState);
+                        break;
+                    
+                    case FarmLandState.Seeding:
+                        player.SwitchState(player.plantState);
+                        break;
+                }
+            }
+            
+         */
+        
+        if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))
         {
             if (!Inventory.IsEmpty() && Inventory.HasItemType<Fruit>())
             {
@@ -162,6 +167,7 @@ public class PlayerRunState : PlayerBaseState
     {
         if (collider.TryGetComponent(out FarmLand farmLand))
         {
+            player.StopCoroutine(player.harvestStateActivationCoroutine);
             player._playerController.DisableStateSelectionButtons();
         }
         else if (collider.TryGetComponent(out JuiceCreationPoint juiceCreationPoint))

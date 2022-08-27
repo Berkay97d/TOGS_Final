@@ -7,8 +7,6 @@ using UpgradeSystem.Core;
 public class PlayerStateManager : MonoBehaviour
 {
     public CinemachineController _cinemachineController;
-
-    public FarmLand farmLand;
     
     [HideInInspector] public PlayerController _playerController;
     [HideInInspector] public PlayerAnimator _playerAnimator;
@@ -16,7 +14,6 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public PlayerStackTransition _playerStackTransition;
     
     [HideInInspector] public PlayerBaseState currentState;
-    public string currStateName;
 
     public PlayerIdleState idleState = new PlayerIdleState();
     
@@ -26,7 +23,9 @@ public class PlayerStateManager : MonoBehaviour
     
     public float SpeedMultiplier { get; private set; }
     public float MagnetRadius { get; private set; }
-
+    
+    public IEnumerator harvestStateActivationCoroutine;
+    
     private void Start()
     {
         InitilizeReferences();
@@ -35,6 +34,8 @@ public class PlayerStateManager : MonoBehaviour
         
         currentState = idleState;
         currentState.EnterState(this);
+
+        harvestStateActivationCoroutine = ActivateHarvestStateSelectionButtonWithDelay();
     }
 
 
@@ -92,7 +93,6 @@ public class PlayerStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
-        currStateName = currentState.ToString();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -160,7 +160,7 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
-    public IEnumerator ActivateHarvestStateSelectionButtonWithDelay(float delay)
+    public IEnumerator ActivateHarvestStateSelectionButtonWithDelay(float delay=0f)
     {
         yield return new WaitForSeconds(delay);
         _playerController.ActivateHarvestStateButton();
