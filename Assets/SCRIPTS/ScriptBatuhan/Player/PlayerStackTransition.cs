@@ -50,7 +50,10 @@ public class PlayerStackTransition : MonoBehaviour
         shipCoroutine = MoveToShip(null);
 
 
-        BagSize = IdleCash.One * 100;
+        /*
+         * TEST BAG SIZE=100 FOR TRANSITIONS
+            BagSize = IdleCash.One * 100;
+        */
     }
 
 
