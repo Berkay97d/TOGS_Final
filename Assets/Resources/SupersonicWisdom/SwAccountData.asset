@@ -12,5 +12,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bde5b51eef6a4560b2a2442b047a9a7, type: 3}
   m_Name: SwAccountData
   m_EditorClassIdentifier: 
-  titlesList: []
+  titlesList:
+  - games: []
+    id: 
+    name: --- select ---
+  - games:
+    - adMobId: 
+      bundleId: 
+      facebookAppId: 295238416387083
+      gameAnalyticsKey: 1d6c0b613c8915be444c218fa83aeb8d
+      gameAnalyticsSecret: 419340f1490cb684a93172346efaea069edad382
+      id: 9c4b0ca1-61f9-4df2-a308-6cfd52f3d32e
+      isAppKey: 
+      os: android
+      platform: google_play
+      storeId: 
+    id: 4c7765fe-ca89-4320-bf13-d660da0e7790
+    name: Avoid The Riot
+  - games:
+    - adMobId: 
+      bundleId: 
+      facebookAppId: 1430813880796835
+      gameAnalyticsKey: 9441ca46eb7e2c52b6a92f6e199782b7
+      gameAnalyticsSecret: e698aca4b22e8039c4674c388f0654a7c497e87b
+      id: 5067f1ea-ce43-4dd0-a61a-5c97b839a3ce
+      isAppKey: 
+      os: android
+      platform: google_play
+      storeId: 
+    id: d41cf2e1-7724-4d58-98a8-c2ec8df81c9f
+    name: Escape the Pirates
+  - games:
+    - adMobId: 
+      bundleId: 
+      facebookAppId: 672357944759585
+      gameAnalyticsKey: 32f6405a6c852b32f7624d3114ae0672
+      gameAnalyticsSecret: 6bec666cda85a5ed32d190348dcab2af4e73336d
+      id: b402367b-12db-42eb-b7f0-ea02417c29c2
+      isAppKey: 
+      os: android
+      platform: google_play
+      storeId: 
+    id: 42870e4a-ab10-4a4e-a657-bc41277bb9c9
+    name: Juice Land
+  - games:
+    - adMobId: 
+      bundleId: 
+      facebookAppId: 1846283122432588
+      gameAnalyticsKey: 11d27acc55f917cbbfd9aa571f3edf0b
+      gameAnalyticsSecret: 588ef0eea64822d4fbad9c5d63af6b64ff4261a7
+      id: 3c54ce63-5527-46a5-ba13-7ce354ce4d0e
+      isAppKey: 
+      os: android
+      platform: google_play
+      storeId: 
+    id: 68b419da-eaf0-44ee-b90b-643d05c0479a
+    name: Run Master
+  - games:
+    - adMobId: 
+      bundleId: 
+      facebookAppId: 661390435915668
+      gameAnalyticsKey: 658327604110afcc46429a1ee27fbaa7
+      gameAnalyticsSecret: 0a602a3edc779ed08b5b232c75410ac12d408444
+      id: e72b2170-8dc4-40b1-a425-db11ebb1a253
+      isAppKey: 
+      os: android
+      platform: google_play
+      storeId: 
+    id: 25385b56-01fc-45b9-9d96-fed4295210bd
+    name: Stronger Than Ever
+  - games:
+    - adMobId: 
+      bundleId: 
+      facebookAppId: 
+      gameAnalyticsKey: 16a8a39f65ec8039bf1c794dce2382d9
+      gameAnalyticsSecret: a766e1dd7af99ffca05413ba0dc6d4837640d2f2
+      id: dcc880e2-8f01-42cb-bf70-9d1235882c70
+      isAppKey: 
+      os: android
+      platform: google_play
+      storeId: 
+    id: c7b364a5-39f0-4af0-bfca-cc8db00a10fe
+    name: Termite Colony
   integrationGuideUrl: 
