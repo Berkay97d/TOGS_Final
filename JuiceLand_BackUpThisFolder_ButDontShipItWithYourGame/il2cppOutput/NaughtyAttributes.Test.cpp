@@ -708,10 +708,10 @@ struct U3CIncrementMyIntCoroutineU3Ed__4_t2ACEC4D058AA7C7A4D89275BDEE919747B448D
 	RuntimeObject* ___U3CU3E2__current_1;
 	// NaughtyAttributes.Test.ButtonTest NaughtyAttributes.Test.ButtonTest/<IncrementMyIntCoroutine>d__4::<>4__this
 	ButtonTest_tC53A7B5BAA6DAB241C46C1A966693752A841D9AF* ___U3CU3E4__this_2;
-	// System.Int32 NaughtyAttributes.Test.ButtonTest/<IncrementMyIntCoroutine>d__4::<seconds>5__2
-	int32_t ___U3CsecondsU3E5__2_3;
-	// System.Int32 NaughtyAttributes.Test.ButtonTest/<IncrementMyIntCoroutine>d__4::<i>5__3
-	int32_t ___U3CiU3E5__3_4;
+	// System.Int32 NaughtyAttributes.Test.ButtonTest/<IncrementMyIntCoroutine>d__4::<seconds>5__1
+	int32_t ___U3CsecondsU3E5__1_3;
+	// System.Int32 NaughtyAttributes.Test.ButtonTest/<IncrementMyIntCoroutine>d__4::<i>5__2
+	int32_t ___U3CiU3E5__2_4;
 };
 
 // NaughtyAttributes.Test.CurveRangeTest/CurveRangeNest1
@@ -2394,77 +2394,97 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CIncrementMyIntCoroutineU3Ed__4_MoveNe
 		s_Il2CppMethodInitialized = true;
 	}
 	int32_t V_0 = 0;
-	ButtonTest_tC53A7B5BAA6DAB241C46C1A966693752A841D9AF* V_1 = NULL;
-	int32_t V_2 = 0;
+	int32_t V_1 = 0;
+	bool V_2 = false;
 	{
 		int32_t L_0 = __this->___U3CU3E1__state_0;
 		V_0 = L_0;
-		ButtonTest_tC53A7B5BAA6DAB241C46C1A966693752A841D9AF* L_1 = __this->___U3CU3E4__this_2;
-		V_1 = L_1;
-		int32_t L_2 = V_0;
-		if (!L_2)
+		int32_t L_1 = V_0;
+		if (!L_1)
 		{
-			goto IL_0017;
+			goto IL_0012;
 		}
 	}
 	{
-		int32_t L_3 = V_0;
-		if ((((int32_t)L_3) == ((int32_t)1)))
+		goto IL_000c;
+	}
+
+IL_000c:
+	{
+		int32_t L_2 = V_0;
+		if ((((int32_t)L_2) == ((int32_t)1)))
 		{
-			goto IL_0055;
+			goto IL_0014;
 		}
 	}
+	{
+		goto IL_0016;
+	}
+
+IL_0012:
+	{
+		goto IL_0018;
+	}
+
+IL_0014:
+	{
+		goto IL_0062;
+	}
+
+IL_0016:
 	{
 		return (bool)0;
 	}
 
-IL_0017:
+IL_0018:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 		// int seconds = 5;
-		__this->___U3CsecondsU3E5__2_3 = 5;
+		__this->___U3CsecondsU3E5__1_3 = 5;
 		// for (int i = 0; i < seconds; i++)
-		__this->___U3CiU3E5__3_4 = 0;
-		goto IL_006c;
+		__this->___U3CiU3E5__2_4 = 0;
+		goto IL_007a;
 	}
 
-IL_002e:
+IL_0030:
 	{
 		// myInt++;
-		ButtonTest_tC53A7B5BAA6DAB241C46C1A966693752A841D9AF* L_4 = V_1;
-		ButtonTest_tC53A7B5BAA6DAB241C46C1A966693752A841D9AF* L_5 = V_1;
-		NullCheck(L_5);
-		int32_t L_6 = L_5->___myInt_4;
+		ButtonTest_tC53A7B5BAA6DAB241C46C1A966693752A841D9AF* L_3 = __this->___U3CU3E4__this_2;
+		ButtonTest_tC53A7B5BAA6DAB241C46C1A966693752A841D9AF* L_4 = __this->___U3CU3E4__this_2;
 		NullCheck(L_4);
-		L_4->___myInt_4 = ((int32_t)il2cpp_codegen_add(L_6, 1));
+		int32_t L_5 = L_4->___myInt_4;
+		NullCheck(L_3);
+		L_3->___myInt_4 = ((int32_t)il2cpp_codegen_add(L_5, 1));
 		// yield return new WaitForSeconds(1.0f);
-		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_7 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
-		NullCheck(L_7);
-		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_7, (1.0f), NULL);
-		__this->___U3CU3E2__current_1 = L_7;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_7);
+		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_6 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
+		NullCheck(L_6);
+		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_6, (1.0f), NULL);
+		__this->___U3CU3E2__current_1 = L_6;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_6);
 		__this->___U3CU3E1__state_0 = 1;
 		return (bool)1;
 	}
 
-IL_0055:
+IL_0062:
 	{
 		__this->___U3CU3E1__state_0 = (-1);
 		// for (int i = 0; i < seconds; i++)
-		int32_t L_8 = __this->___U3CiU3E5__3_4;
-		V_2 = L_8;
-		int32_t L_9 = V_2;
-		__this->___U3CiU3E5__3_4 = ((int32_t)il2cpp_codegen_add(L_9, 1));
+		int32_t L_7 = __this->___U3CiU3E5__2_4;
+		V_1 = L_7;
+		int32_t L_8 = V_1;
+		__this->___U3CiU3E5__2_4 = ((int32_t)il2cpp_codegen_add(L_8, 1));
 	}
 
-IL_006c:
+IL_007a:
 	{
 		// for (int i = 0; i < seconds; i++)
-		int32_t L_10 = __this->___U3CiU3E5__3_4;
-		int32_t L_11 = __this->___U3CsecondsU3E5__2_3;
-		if ((((int32_t)L_10) < ((int32_t)L_11)))
+		int32_t L_9 = __this->___U3CiU3E5__2_4;
+		int32_t L_10 = __this->___U3CsecondsU3E5__1_3;
+		V_2 = (bool)((((int32_t)L_9) < ((int32_t)L_10))? 1 : 0);
+		bool L_11 = V_2;
+		if (L_11)
 		{
-			goto IL_002e;
+			goto IL_0030;
 		}
 	}
 	{
@@ -2573,37 +2593,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DisableIfTest__ctor_m1556387190BDC45CED6
 // System.Boolean NaughtyAttributes.Test.DisableIfNest1::get_Disable1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool DisableIfNest1_get_Disable1_mD72D453B5DA4EA7F4272C40D79D104196E069C3D (DisableIfNest1_t0B1489A5D7D242C8848E8038217E302BC622D4EF* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Disable1 { get { return disable1; } }
 		bool L_0 = __this->___disable1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Disable1 { get { return disable1; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.DisableIfNest1::get_Disable2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool DisableIfNest1_get_Disable2_m566BDC132B5B525A207E8C3EBB8B2EA02930DC7B (DisableIfNest1_t0B1489A5D7D242C8848E8038217E302BC622D4EF* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Disable2 { get { return disable2; } }
 		bool L_0 = __this->___disable2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Disable2 { get { return disable2; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.DisableIfEnum NaughtyAttributes.Test.DisableIfNest1::get_Enum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DisableIfNest1_get_Enum1_mEAC0210BF7C67937728940F72D84A1CE07E93A56 (DisableIfNest1_t0B1489A5D7D242C8848E8038217E302BC622D4EF* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public DisableIfEnum Enum1 { get { return enum1; } }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public DisableIfEnum Enum1 { get { return enum1; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.DisableIfEnumFlag NaughtyAttributes.Test.DisableIfNest1::get_Enum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DisableIfNest1_get_Enum2_mE385A4B087C7F12A634D51F53AD8D4F21EE40911 (DisableIfNest1_t0B1489A5D7D242C8848E8038217E302BC622D4EF* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public DisableIfEnumFlag Enum2 { get { return enum2; } }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public DisableIfEnumFlag Enum2 { get { return enum2; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.DisableIfNest1::.ctor()
@@ -2631,37 +2687,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DisableIfNest1__ctor_m202873980996B90564
 // System.Boolean NaughtyAttributes.Test.DisableIfNest2::GetDisable1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool DisableIfNest2_GetDisable1_mE1DF755DC4B22B376FB0DE6B54E366902360CAA9 (DisableIfNest2_tAF4BAAE02600F16D4B4AD304BE785A46FD150BFD* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetDisable1() { return disable1; }
 		bool L_0 = __this->___disable1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetDisable1() { return disable1; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.DisableIfNest2::GetDisable2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool DisableIfNest2_GetDisable2_mF9D2BEA8D1BB16315618389D2CE6371FA20A2FE3 (DisableIfNest2_tAF4BAAE02600F16D4B4AD304BE785A46FD150BFD* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetDisable2() { return disable2; }
 		bool L_0 = __this->___disable2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetDisable2() { return disable2; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.DisableIfEnum NaughtyAttributes.Test.DisableIfNest2::GetEnum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DisableIfNest2_GetEnum1_m31DF2223219F257BEB7DCCCA43DE7CFB02C2644E (DisableIfNest2_tAF4BAAE02600F16D4B4AD304BE785A46FD150BFD* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public DisableIfEnum GetEnum1() { return enum1; }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public DisableIfEnum GetEnum1() { return enum1; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.DisableIfEnumFlag NaughtyAttributes.Test.DisableIfNest2::GetEnum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DisableIfNest2_GetEnum2_m3C9E5833BD6379BA4B349293BAFA19F71C57D9EC (DisableIfNest2_tAF4BAAE02600F16D4B4AD304BE785A46FD150BFD* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public DisableIfEnumFlag GetEnum2() { return enum2; }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public DisableIfEnumFlag GetEnum2() { return enum2; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.DisableIfNest2::.ctor()
@@ -2739,6 +2831,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralEF420ABFDDBDA7B9EE665D85EF62E4A437554003);
 		s_Il2CppMethodInitialized = true;
 	}
+	List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* V_0 = NULL;
 	{
 		// private List<string> StringValues { get { return new List<string>() { "A", "B", "C" }; } }
 		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_0 = (List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD*)il2cpp_codegen_object_new(List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD_il2cpp_TypeInfo_var);
@@ -2753,7 +2846,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD
 		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_3 = L_2;
 		NullCheck(L_3);
 		List_1_Add_mF10DB1D3CBB0B14215F0E4F8AB4934A1955E5351_inline(L_3, _stringLiteralBF86C9E9E7FE0EF09A2EAE8066CDC31F859254CC, List_1_Add_mF10DB1D3CBB0B14215F0E4F8AB4934A1955E5351_RuntimeMethod_var);
-		return L_3;
+		V_0 = L_3;
+		goto IL_002d;
+	}
+
+IL_002d:
+	{
+		// private List<string> StringValues { get { return new List<string>() { "A", "B", "C" }; } }
+		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_4 = V_0;
+		return L_4;
 	}
 }
 // System.Void NaughtyAttributes.Test.DropdownNest1::.ctor()
@@ -2786,6 +2887,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR DropdownList_1_t8CB55CC1EE10B7323EB48D3189984
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9D354CA1036DDA6F701F800C5C1B3A4235D2EDD7);
 		s_Il2CppMethodInitialized = true;
 	}
+	DropdownList_1_t8CB55CC1EE10B7323EB48D3189984680E3DCB3CA* V_0 = NULL;
 	{
 		// return new DropdownList<Vector3>()
 		// {
@@ -2811,7 +2913,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR DropdownList_1_t8CB55CC1EE10B7323EB48D3189984
 		L_6 = Vector3_get_forward_mEBAB24D77FC02FC88ED880738C3B1D47C758B3EB_inline(NULL);
 		NullCheck(L_5);
 		DropdownList_1_Add_m907C6F0A09DF41952E057D939ED012087B7B33AC(L_5, _stringLiteral724F6EF07C0D3FFFD32A55027218B65FB4F377E1, L_6, DropdownList_1_Add_m907C6F0A09DF41952E057D939ED012087B7B33AC_RuntimeMethod_var);
-		return L_5;
+		V_0 = L_5;
+		goto IL_003c;
+	}
+
+IL_003c:
+	{
+		// }
+		DropdownList_1_t8CB55CC1EE10B7323EB48D3189984680E3DCB3CA* L_7 = V_0;
+		return L_7;
 	}
 }
 // System.Void NaughtyAttributes.Test.DropdownNest2::.ctor()
@@ -2849,37 +2959,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnableIfTest__ctor_m4E9FEE69AC1E4AE2DBB6
 // System.Boolean NaughtyAttributes.Test.EnableIfNest1::get_Enable1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool EnableIfNest1_get_Enable1_m6A634A96F1758D4817077FEDE97FA344FF9E3206 (EnableIfNest1_t8930E4588C84763024B9BAF718A86ADEA020E8C9* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Enable1 { get { return enable1; } }
 		bool L_0 = __this->___enable1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Enable1 { get { return enable1; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.EnableIfNest1::get_Enable2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool EnableIfNest1_get_Enable2_m678E61CA72C70A0D5B1979F01E156F146B45FF62 (EnableIfNest1_t8930E4588C84763024B9BAF718A86ADEA020E8C9* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Enable2 { get { return enable2; } }
 		bool L_0 = __this->___enable2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Enable2 { get { return enable2; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.EnableIfEnum NaughtyAttributes.Test.EnableIfNest1::get_Enum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t EnableIfNest1_get_Enum1_m6F6A078C0F13189BB0A1B4ED6ACC02ED7B25BF62 (EnableIfNest1_t8930E4588C84763024B9BAF718A86ADEA020E8C9* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public EnableIfEnum Enum1 { get { return enum1; } }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public EnableIfEnum Enum1 { get { return enum1; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.EnableIfEnumFlag NaughtyAttributes.Test.EnableIfNest1::get_Enum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t EnableIfNest1_get_Enum2_m5BB29101F194BA6E0DB40A884F1050346B26F6F5 (EnableIfNest1_t8930E4588C84763024B9BAF718A86ADEA020E8C9* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public EnableIfEnumFlag Enum2 { get { return enum2; } }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public EnableIfEnumFlag Enum2 { get { return enum2; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.EnableIfNest1::.ctor()
@@ -2901,37 +3047,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnableIfNest1__ctor_m67A0550869F992D5ACD
 // System.Boolean NaughtyAttributes.Test.EnableIfNest2::GetEnable1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool EnableIfNest2_GetEnable1_m27539B98724D87531672CD7F589A766F5F08E5E6 (EnableIfNest2_tBB5BC17D6F24A1D31BA77C209B83C57DC7B826B8* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetEnable1() { return enable1; }
 		bool L_0 = __this->___enable1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetEnable1() { return enable1; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.EnableIfNest2::GetEnable2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool EnableIfNest2_GetEnable2_m5B4897A45749A261543D85E20A0E60F89F602A0D (EnableIfNest2_tBB5BC17D6F24A1D31BA77C209B83C57DC7B826B8* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetEnable2() { return enable2; }
 		bool L_0 = __this->___enable2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetEnable2() { return enable2; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.EnableIfEnum NaughtyAttributes.Test.EnableIfNest2::GetEnum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t EnableIfNest2_GetEnum1_m7F6BD780042339F186A4269B2D21F477B53A9F08 (EnableIfNest2_tBB5BC17D6F24A1D31BA77C209B83C57DC7B826B8* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public EnableIfEnum GetEnum1() { return enum1; }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public EnableIfEnum GetEnum1() { return enum1; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.EnableIfEnumFlag NaughtyAttributes.Test.EnableIfNest2::GetEnum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t EnableIfNest2_GetEnum2_m16D0945B92E97B7CFC10450C195581A3CEF75C8D (EnableIfNest2_tBB5BC17D6F24A1D31BA77C209B83C57DC7B826B8* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public EnableIfEnumFlag GetEnum2() { return enum2; }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public EnableIfEnumFlag GetEnum2() { return enum2; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.EnableIfNest2::.ctor()
@@ -3098,37 +3280,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HideIfTest__ctor_m18EA077594CAE5D66B3630
 // System.Boolean NaughtyAttributes.Test.HideIfNest1::get_Hide1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool HideIfNest1_get_Hide1_mDE3B428673A9AC01DA542A428EE1E82E9539C03A (HideIfNest1_t3D3F29337231AA52072231513DC71D6A3309D256* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Hide1 { get { return hide1; } }
 		bool L_0 = __this->___hide1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Hide1 { get { return hide1; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.HideIfNest1::get_Hide2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool HideIfNest1_get_Hide2_m5FA7DD2D95053218AA7F4979F12175734108EFFB (HideIfNest1_t3D3F29337231AA52072231513DC71D6A3309D256* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Hide2 { get { return hide2; } }
 		bool L_0 = __this->___hide2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Hide2 { get { return hide2; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.HideIfEnum NaughtyAttributes.Test.HideIfNest1::get_Enum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t HideIfNest1_get_Enum1_mF72E5626A508BDAA08B91619ACDF0FF5C8618741 (HideIfNest1_t3D3F29337231AA52072231513DC71D6A3309D256* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public HideIfEnum Enum1 { get { return enum1; } }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public HideIfEnum Enum1 { get { return enum1; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.HideIfEnumFlag NaughtyAttributes.Test.HideIfNest1::get_Enum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t HideIfNest1_get_Enum2_m8832BA8A9008CFC9CB416666B87A38EA4A8B030A (HideIfNest1_t3D3F29337231AA52072231513DC71D6A3309D256* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public HideIfEnumFlag Enum2 { get { return enum2; } }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public HideIfEnumFlag Enum2 { get { return enum2; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.HideIfNest1::.ctor()
@@ -3150,37 +3368,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HideIfNest1__ctor_m7DDF0D12105F7F53708A1
 // System.Boolean NaughtyAttributes.Test.HideIfNest2::GetHide1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool HideIfNest2_GetHide1_m534B09FEB231880EA877FF494281B46C6F6138FE (HideIfNest2_tBD2BBDB0781FD532B5B3AE1159403C34D60DE983* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetHide1() { return hide1; }
 		bool L_0 = __this->___hide1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetHide1() { return hide1; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.HideIfNest2::GetHide2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool HideIfNest2_GetHide2_m85583F8DCD13198D87CE58707E011C07993B1421 (HideIfNest2_tBD2BBDB0781FD532B5B3AE1159403C34D60DE983* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetHide2() { return hide2; }
 		bool L_0 = __this->___hide2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetHide2() { return hide2; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.HideIfEnum NaughtyAttributes.Test.HideIfNest2::GetEnum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t HideIfNest2_GetEnum1_m51E43A5DC70BFE63CC51DA22E3FB8E945B69FB72 (HideIfNest2_tBD2BBDB0781FD532B5B3AE1159403C34D60DE983* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public HideIfEnum GetEnum1() { return enum1; }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public HideIfEnum GetEnum1() { return enum1; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.HideIfEnumFlag NaughtyAttributes.Test.HideIfNest2::GetEnum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t HideIfNest2_GetEnum2_m35606D7F6FE63F7102010E4FA2CA5F5D455764AE (HideIfNest2_tBD2BBDB0781FD532B5B3AE1159403C34D60DE983* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public HideIfEnumFlag GetEnum2() { return enum2; }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public HideIfEnumFlag GetEnum2() { return enum2; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.HideIfNest2::.ctor()
@@ -4242,37 +4496,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ShowIfTest__ctor_m9E4C8C050D5B5BEF7DDDE3
 // System.Boolean NaughtyAttributes.Test.ShowIfNest1::get_Show1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ShowIfNest1_get_Show1_m001477A8D7366C55E55C19B923944CE0FF67FE22 (ShowIfNest1_t35ACBD1A03D2BB4A695A1E81A4CB6AB5A20DAEF7* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Show1 { get { return show1; } }
 		bool L_0 = __this->___show1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Show1 { get { return show1; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.ShowIfNest1::get_Show2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ShowIfNest1_get_Show2_m8EF445E81B095331C6B6960F842B9B37EE965463 (ShowIfNest1_t35ACBD1A03D2BB4A695A1E81A4CB6AB5A20DAEF7* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool Show2 { get { return show2; } }
 		bool L_0 = __this->___show2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool Show2 { get { return show2; } }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.ShowIfEnum NaughtyAttributes.Test.ShowIfNest1::get_Enum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ShowIfNest1_get_Enum1_m86719CE9E87C570850F2E760D1C102BEA7FB9A05 (ShowIfNest1_t35ACBD1A03D2BB4A695A1E81A4CB6AB5A20DAEF7* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public ShowIfEnum Enum1 { get { return enum1; } }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public ShowIfEnum Enum1 { get { return enum1; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.ShowIfEnumFlag NaughtyAttributes.Test.ShowIfNest1::get_Enum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ShowIfNest1_get_Enum2_mEA89205C05F072CB5D8D310050CF8DEE1AE0F76C (ShowIfNest1_t35ACBD1A03D2BB4A695A1E81A4CB6AB5A20DAEF7* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public ShowIfEnumFlag Enum2 { get { return enum2; } }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public ShowIfEnumFlag Enum2 { get { return enum2; } }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.ShowIfNest1::.ctor()
@@ -4294,37 +4584,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ShowIfNest1__ctor_m25FF6BDA0B4A4B317F402
 // System.Boolean NaughtyAttributes.Test.ShowIfNest2::GetShow1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ShowIfNest2_GetShow1_mA5FD56E522C2CA98FB4C3E300A2C81DA01E02DD9 (ShowIfNest2_tAAD196285374E20A8D0F5B2F5E72E242012DC599* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetShow1() { return show1; }
 		bool L_0 = __this->___show1_0;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetShow1() { return show1; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Boolean NaughtyAttributes.Test.ShowIfNest2::GetShow2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ShowIfNest2_GetShow2_m088362435F87082953247212BE6974AE7424BE58 (ShowIfNest2_tAAD196285374E20A8D0F5B2F5E72E242012DC599* __this, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// public bool GetShow2() { return show2; }
 		bool L_0 = __this->___show2_1;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public bool GetShow2() { return show2; }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.ShowIfEnum NaughtyAttributes.Test.ShowIfNest2::GetEnum1()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ShowIfNest2_GetEnum1_mFD3A9843688AB89B1E84E30F1A32BAE7B1069957 (ShowIfNest2_tAAD196285374E20A8D0F5B2F5E72E242012DC599* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public ShowIfEnum GetEnum1() { return enum1; }
 		int32_t L_0 = __this->___enum1_2;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public ShowIfEnum GetEnum1() { return enum1; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // NaughtyAttributes.Test.ShowIfEnumFlag NaughtyAttributes.Test.ShowIfNest2::GetEnum2()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ShowIfNest2_GetEnum2_mA72AC251DC9B573235DEFD7037A915AAA2E73B68 (ShowIfNest2_tAAD196285374E20A8D0F5B2F5E72E242012DC599* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// public ShowIfEnumFlag GetEnum2() { return enum2; }
 		int32_t L_0 = __this->___enum2_3;
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// public ShowIfEnumFlag GetEnum2() { return enum2; }
+		int32_t L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.ShowIfNest2::.ctor()
@@ -4361,16 +4687,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ShowIfNest2__ctor_m09718AAD823A743D7F826
 // UnityEngine.Transform NaughtyAttributes.Test.ShowNativePropertyTest::get_Transform()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ShowNativePropertyTest_get_Transform_mC4CB49AD095B2A75A1EA70B566D90CB9C7F28A93 (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_0 = NULL;
 	{
 		// return transform;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
 		L_0 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
-		return L_0;
+		V_0 = L_0;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		// }
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1 = V_0;
+		return L_1;
 	}
 }
 // UnityEngine.Transform NaughtyAttributes.Test.ShowNativePropertyTest::get_ParentTransform()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ShowNativePropertyTest_get_ParentTransform_mD44B3EEA9A2AD48244C22B6EA1B3E11FF5DF13CB (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_0 = NULL;
 	{
 		// return transform.parent;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
@@ -4378,55 +4714,117 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 		NullCheck(L_0);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1;
 		L_1 = Transform_get_parent_m65354E28A4C94EC00EBCF03532F7B0718380791E(L_0, NULL);
-		return L_1;
+		V_0 = L_1;
+		goto IL_000f;
+	}
+
+IL_000f:
+	{
+		// }
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = V_0;
+		return L_2;
 	}
 }
 // System.UInt16 NaughtyAttributes.Test.ShowNativePropertyTest::get_MyUShort()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint16_t ShowNativePropertyTest_get_MyUShort_m091B7CE9B4523ECAEE916CD9DD669D5F7D4C648C (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	uint16_t V_0 = 0;
 	{
 		// return ushort.MaxValue;
-		return (uint16_t)((int32_t)65535);
+		V_0 = (uint16_t)((int32_t)65535);
+		goto IL_0009;
+	}
+
+IL_0009:
+	{
+		// }
+		uint16_t L_0 = V_0;
+		return L_0;
 	}
 }
 // System.Int16 NaughtyAttributes.Test.ShowNativePropertyTest::get_MyShort()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int16_t ShowNativePropertyTest_get_MyShort_mA2E727D5FE04DAA44D8A355B094714BB7E6FD71B (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	int16_t V_0 = 0;
 	{
 		// return short.MaxValue;
-		return (int16_t)((int32_t)32767);
+		V_0 = (int16_t)((int32_t)32767);
+		goto IL_0009;
+	}
+
+IL_0009:
+	{
+		// }
+		int16_t L_0 = V_0;
+		return L_0;
 	}
 }
 // System.UInt64 NaughtyAttributes.Test.ShowNativePropertyTest::get_MyULong()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t ShowNativePropertyTest_get_MyULong_mEC52EEB959F0CDEB8F3CA2DE42BD6CF3DE52A7E9 (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	uint64_t V_0 = 0;
 	{
 		// return ulong.MaxValue;
-		return ((int64_t)(-1));
+		V_0 = ((int64_t)(-1));
+		goto IL_0006;
+	}
+
+IL_0006:
+	{
+		// }
+		uint64_t L_0 = V_0;
+		return L_0;
 	}
 }
 // System.Int64 NaughtyAttributes.Test.ShowNativePropertyTest::get_MyLong()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int64_t ShowNativePropertyTest_get_MyLong_mCA01D9421EA18891AA04AB78ED1ED3BEA3DB5CCB (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	int64_t V_0 = 0;
 	{
 		// return long.MaxValue;
-		return ((int64_t)(std::numeric_limits<int64_t>::max)());
+		V_0 = ((int64_t)(std::numeric_limits<int64_t>::max)());
+		goto IL_000d;
+	}
+
+IL_000d:
+	{
+		// }
+		int64_t L_0 = V_0;
+		return L_0;
 	}
 }
 // System.UInt32 NaughtyAttributes.Test.ShowNativePropertyTest::get_MyUInt()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint32_t ShowNativePropertyTest_get_MyUInt_m777CC09DAFC05E61EBC1B3920A321BA842A130C8 (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	uint32_t V_0 = 0;
 	{
 		// return uint.MaxValue;
-		return (-1);
+		V_0 = (-1);
+		goto IL_0005;
+	}
+
+IL_0005:
+	{
+		// }
+		uint32_t L_0 = V_0;
+		return L_0;
 	}
 }
 // System.Int32 NaughtyAttributes.Test.ShowNativePropertyTest::get_MyInt()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ShowNativePropertyTest_get_MyInt_mA7CB8BA573C1D6F825B5162E4D66A1EC7979C560 (ShowNativePropertyTest_t6D74DEF81957CB0346E4D9817FC355160554FDB5* __this, const RuntimeMethod* method) 
 {
+	int32_t V_0 = 0;
 	{
 		// return int.MaxValue;
-		return ((int32_t)2147483647LL);
+		V_0 = ((int32_t)2147483647LL);
+		goto IL_0009;
+	}
+
+IL_0009:
+	{
+		// }
+		int32_t L_0 = V_0;
+		return L_0;
 	}
 }
 // System.Void NaughtyAttributes.Test.ShowNativePropertyTest::.ctor()
@@ -4745,10 +5143,19 @@ IL2CPP_EXTERN_C void TagNest2_t47F9033A7B0BC325DE6C1F87E13F6CEDA6ED456F_marshal_
 // System.Boolean NaughtyAttributes.Test.ValidateInputTest::NotZero0(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ValidateInputTest_NotZero0_m67E818ABAA1E3AD38B1141D2A5D1C44ED58BB53A (ValidateInputTest_tE07D9F0FC4439E9F118744FCE469F462A48AF80E* __this, int32_t ___value0, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// return value != 0;
 		int32_t L_0 = ___value0;
-		return (bool)((!(((uint32_t)L_0) <= ((uint32_t)0)))? 1 : 0);
+		V_0 = (bool)((!(((uint32_t)L_0) <= ((uint32_t)0)))? 1 : 0);
+		goto IL_0008;
+	}
+
+IL_0008:
+	{
+		// }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.ValidateInputTest::.ctor()
@@ -4770,10 +5177,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ValidateInputTest__ctor_m3DC57D0D8BD2141
 // System.Boolean NaughtyAttributes.Test.ValidateInputNest1::NotZero1(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ValidateInputNest1_NotZero1_m2227959A614AE26027D47BD3C2EE16C3A1BC4284 (ValidateInputNest1_t7B8CBDEBF158A4C97996E566169CB56617407FBC* __this, int32_t ___value0, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// return value != 0;
 		int32_t L_0 = ___value0;
-		return (bool)((!(((uint32_t)L_0) <= ((uint32_t)0)))? 1 : 0);
+		V_0 = (bool)((!(((uint32_t)L_0) <= ((uint32_t)0)))? 1 : 0);
+		goto IL_0008;
+	}
+
+IL_0008:
+	{
+		// }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.ValidateInputNest1::.ctor()
@@ -4795,10 +5211,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ValidateInputNest1__ctor_mF9863B8F588118
 // System.Boolean NaughtyAttributes.Test.ValidateInputNest2::NotZero2(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ValidateInputNest2_NotZero2_m6D04CD87604A65CC9942703C8E7CBC0C0B1947B3 (ValidateInputNest2_t96387F63C15C23F1B50B4B467097AE0151E12D51* __this, int32_t ___value0, const RuntimeMethod* method) 
 {
+	bool V_0 = false;
 	{
 		// return value != 0;
 		int32_t L_0 = ___value0;
-		return (bool)((!(((uint32_t)L_0) <= ((uint32_t)0)))? 1 : 0);
+		V_0 = (bool)((!(((uint32_t)L_0) <= ((uint32_t)0)))? 1 : 0);
+		goto IL_0008;
+	}
+
+IL_0008:
+	{
+		// }
+		bool L_1 = V_0;
+		return L_1;
 	}
 }
 // System.Void NaughtyAttributes.Test.ValidateInputNest2::.ctor()
